@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".ui.activities.AdminActivity">
+
+    <TextView
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/adminText"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/firstNameUser"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:inputType="text"
+        android:hint="@string/firstNameUser"
+        android:autofillHints="name"/>
+
+    <EditText
+        android:id="@+id/lastNameUser"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:inputType="text"
+        android:hint="@string/lastNameUser"
+        android:autofillHints="name"/>
+
+    <EditText
+        android:id="@+id/emailUser"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:inputType="textEmailAddress"
+        android:hint="@string/emailUser"
+        android:autofillHints="emailAddress"/>
+
+    <EditText
+        android:id="@+id/passwordUser"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:inputType="textPassword"
+        android:hint="@string/passwordUser"
+        android:autofillHints="password"/>
+
+    <RadioGroup
+        android:id="@+id/userTypeGroup"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/userType"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/studentRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/student" />
+
+        <RadioButton
+            android:id="@+id/teacherRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/teacher" />
+
+        <RadioButton
+            android:id="@+id/adminRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/admin" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/addUserBtn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/blue"
+        android:padding="13dp"
+        android:text="@string/addUser"
+        android:textColor="@color/white"
+        android:layout_gravity="center"/>
+
+
+</LinearLayout>

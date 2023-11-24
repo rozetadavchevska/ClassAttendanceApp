@@ -6,7 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.ap.classattendanceapp.ui.activities.LoginActivity;
+import com.ap.classattendanceapp.ui.activities.AdminActivity;
+import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,9 +17,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        FirebaseApp.initializeApp(this);
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            Intent intent = new Intent(MainActivity.this, AdminActivity.class);
             startActivity(intent);
             finish();
         }, SPLASH_DELAY);

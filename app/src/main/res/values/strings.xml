@@ -12,4 +12,15 @@
     <string name="profile">Profile</string>
 
     <string name="homeText">Attend upcoming classes</string>
+
+    <string name="adminText">Admin Panel</string>
+    <string name="firstNameUser">First Name</string>
+    <string name="lastNameUser">Last Name</string>
+    <string name="emailUser">Email</string>
+    <string name="passwordUser">Password</string>
+    <string name="userType">User Type</string>
+    <string name="student">Student</string>
+    <string name="teacher">Teacher</string>
+    <string name="admin">Admin</string>
+    <string name="addUser">Add New User</string>
 </resources>
