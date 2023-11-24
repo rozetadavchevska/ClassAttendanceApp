@@ -10,5 +10,5 @@
     <string name="calendar">Calendar</string>
     <string name="profile">Profile</string>
 
-    <string name="helloFragment">Hello fragment</string>
+    <string name="homeText">Attend upcoming classes</string>
 </resources>
