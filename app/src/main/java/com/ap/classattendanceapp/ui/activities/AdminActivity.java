@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.ap.classattendanceapp.R;
 import com.ap.classattendanceapp.data.models.User;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,6 +24,7 @@ public class AdminActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private RadioGroup userTypeGroup;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,26 +69,31 @@ public class AdminActivity extends AppCompatActivity {
 
     private void addUserToDatabase(String fName, String lName, String emailUser, String passwordUser, String userType){
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
-        String userId = usersRef.push().getKey();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
 
-        if(userId != null){
-            User addNewUser = new User(userId, emailUser, passwordUser, fName, lName, userType,
-                    new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        auth.createUserWithEmailAndPassword(emailUser, passwordUser)
+                .addOnCompleteListener(task -> {
+                   if(task.isSuccessful()){
+                       String uid = auth.getCurrentUser().getUid();
+                       User addNewUser = new User(uid, emailUser, passwordUser, fName, lName, userType,
+                               new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+                       usersRef.child(uid).setValue(addNewUser)
+                               .addOnSuccessListener(e -> {
+                                   Toast.makeText(this,"Successfully added user", Toast.LENGTH_SHORT).show();
 
-            usersRef.child(userId).setValue(addNewUser)
-                    .addOnSuccessListener(e -> {
-                        Toast.makeText(this,"Successfully added user", Toast.LENGTH_SHORT).show();
+                                   firstName.getText().clear();
+                                   lastName.getText().clear();
+                                   email.getText().clear();
+                                   password.getText().clear();
+                                   userTypeGroup.clearCheck();
+                               })
+                               .addOnFailureListener(e -> Toast.makeText(this,"Error adding user: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                   }
+                });
 
-                        firstName.getText().clear();
-                        lastName.getText().clear();
-                        email.getText().clear();
-                        password.getText().clear();
-                        userTypeGroup.clearCheck();
-                    })
-                    .addOnFailureListener(e -> Toast.makeText(this,"Error adding user: " + e.getMessage(), Toast.LENGTH_SHORT).show());
-        } else {
-            Toast.makeText(this, "Error generating user id", Toast.LENGTH_SHORT).show();
-        }
+
+
+
 
     }
 }
