@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 
 import com.ap.classattendanceapp.R;
 
-public class ClassesFragment extends Fragment {
+public class StudentClassesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_classes, container, false);
+        return inflater.inflate(R.layout.fragment_student_classes, container, false);
     }
 }

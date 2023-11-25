@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="20sp"
     android:background="@color/white"
-    tools:context=".ui.fragments.HomeFragment">
+    tools:context=".ui.fragments.StudentHomeFragment">
 
     <TextView
         android:id="@+id/firstHomeText"

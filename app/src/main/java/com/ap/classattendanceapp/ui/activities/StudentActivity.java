@@ -6,18 +6,18 @@ import android.os.Bundle;
 
 import com.ap.classattendanceapp.R;
 import com.ap.classattendanceapp.ui.fragments.CalendarFragment;
-import com.ap.classattendanceapp.ui.fragments.ClassesFragment;
-import com.ap.classattendanceapp.ui.fragments.CoursesFragment;
-import com.ap.classattendanceapp.ui.fragments.HomeFragment;
+import com.ap.classattendanceapp.ui.fragments.StudentClassesFragment;
+import com.ap.classattendanceapp.ui.fragments.StudentCoursesFragment;
+import com.ap.classattendanceapp.ui.fragments.StudentHomeFragment;
 import com.ap.classattendanceapp.ui.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class StudentActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNav;
-    HomeFragment homeFragment = new HomeFragment();
-    CoursesFragment coursesFragment = new CoursesFragment();
-    ClassesFragment classesFragment = new ClassesFragment();
+    StudentHomeFragment homeFragment = new StudentHomeFragment();
+    StudentCoursesFragment coursesFragment = new StudentCoursesFragment();
+    StudentClassesFragment classesFragment = new StudentClassesFragment();
     CalendarFragment calendarFragment = new CalendarFragment();
     ProfileFragment profileFragment = new ProfileFragment();
 
