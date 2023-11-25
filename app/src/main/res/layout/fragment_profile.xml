@@ -3,7 +3,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.ProfileFragment">
+    tools:context=".ui.fragments.ProfileFragment"
+    android:gravity="center">
 
+
+    <ImageView
+        android:id="@+id/profileImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:contentDescription="@string/profile"
+        android:src="@drawable/ic_profile"
+        android:layout_centerHorizontal="true"  />
+
+    <TextView
+        android:id="@+id/fNameProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profileImg"
+        android:layout_margin="5dp"
+        android:text="@string/firstNameUser"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"  />
+
+    <TextView
+        android:id="@+id/lNameProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/lastNameUser"
+        android:textSize="18sp"
+        android:layout_below="@+id/fNameProfile"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/emailProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/emailUser"
+        android:textSize="18sp"
+        android:layout_below="@+id/lNameProfile"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emailProfile"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/blue"
+        android:padding="5dp"
+        android:text="@string/logout"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
