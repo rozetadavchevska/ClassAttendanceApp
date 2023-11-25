@@ -24,4 +24,14 @@
     <string name="teacher">Teacher</string>
     <string name="admin">Admin</string>
     <string name="addUser">Add New User</string>
+
+    <string name="addNewCourse">Add New Course</string>
+    <string name="viewCourses">View Courses</string>
+    <string name="myCourses">My Courses</string>
+    <string name="courseName">Name</string>
+    <string name="courseDescription">Description</string>
+    <string name="addCourse">Add Course</string>
+
+    <string name="backBtn">Back</string>
+
 </resources>

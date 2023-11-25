@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.ViewCoursesFragment">
+
+    <ImageButton
+        android:id="@+id/viewCoursesBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_back"
+        android:contentDescription="@string/backBtn"
+        android:backgroundTint="@color/white"/>
+
+    <TextView
+        android:id="@+id/courseText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/courses"
+        android:layout_marginBottom="16sp"
+        android:textColor="@color/blue"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_below="@+id/viewCoursesBack"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:layout_below="@+id/courseText"/>
+
+</RelativeLayout>
