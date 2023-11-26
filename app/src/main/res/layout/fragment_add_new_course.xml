@@ -35,38 +35,64 @@
             android:textAlignment="textStart"/>
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/courseName"
-        android:layout_width="420sp"
-        android:layout_height="50sp"
-        android:inputType="text"
-        android:layout_margin="16sp"
-        android:hint="@string/name"
-        android:autofillHints="name"
-        android:layout_below="@+id/headerNewCourse"
-        android:layout_centerHorizontal="true"/>
-
-    <EditText
-        android:id="@+id/courseDescription"
-        android:layout_width="420sp"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="50sp"
-        android:layout_margin="16sp"
-        android:inputType="textMultiLine"
-        android:hint="@string/description"
-        android:autofillHints="name"
-        android:layout_below="@+id/courseName"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@+id/headerNewCourse">
 
-    <Button
-        android:id="@+id/addCourseBtn"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="@string/addCourse"
-        android:layout_margin="16sp"
-        android:padding="10sp"
-        android:backgroundTint="@color/blue"
-        android:layout_below="@+id/courseDescription"
-        android:layout_centerHorizontal="true"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/courseName"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:inputType="text"
+                android:layout_margin="16sp"
+                android:hint="@string/name"
+                android:autofillHints="name"/>
+
+            <EditText
+                android:id="@+id/courseDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50sp"
+                android:layout_margin="16sp"
+                android:inputType="textMultiLine"
+                android:hint="@string/description"
+                android:autofillHints="name"/>
+
+            <TextView
+                android:id="@+id/studentCourseText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:text="@string/teacher"
+                android:textColor="@color/blue"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_margin="16sp"
+                />
+
+            <Button
+                android:id="@+id/addCourseBtn"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="@string/addCourse"
+                android:layout_margin="16sp"
+                android:padding="10sp"
+                android:backgroundTint="@color/blue"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
