@@ -9,21 +9,21 @@ public class User {
     private String firstName;
     private String lastName;
     private String userType;
-    private List<String> courses;
+    private List<String> coursesId;
     private List<String> classes;
     private List<String> attendedClasses;
 
     public User(){}
 
     public User(String userId, String userEmail, String userPassword, String firstName, String lastName,
-                String userType, List<String> courses, List<String> classes, List<String> attendedClasses){
+                String userType, List<String> coursesId, List<String> classes, List<String> attendedClasses){
         this.userId = userId;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userType = userType;
-        this.courses = courses;
+        this.coursesId = coursesId;
         this.classes = classes;
         this.attendedClasses = attendedClasses;
     }
@@ -76,12 +76,12 @@ public class User {
         this.userType = userType;
     }
 
-    public List<String> getCourses() {
-        return courses;
+    public List<String> getCoursesId() {
+        return coursesId;
     }
 
-    public void setCourses(List<String> courses) {
-        this.courses = courses;
+    public void setCoursesId(List<String> courses) {
+        this.coursesId = coursesId;
     }
 
     public List<String> getClasses() {

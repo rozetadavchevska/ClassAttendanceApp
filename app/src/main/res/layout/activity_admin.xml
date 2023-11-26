@@ -5,33 +5,54 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".ui.activities.AdminActivity">
 
-    <TextView
-        android:layout_width="330dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="@string/adminText"
-        android:textAlignment="center"
-        android:textColor="@color/blue"
-        android:textSize="28sp"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="16sp"
+            android:text="@string/adminText"
+            android:textAlignment="textStart"
+            android:textColor="@color/blue"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/adminLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16sp"
+            android:src="@drawable/ic_logout"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/logout"
+            />
+
+    </LinearLayout>
+
 
     <EditText
         android:id="@+id/firstNameUser"
-        android:layout_width="330dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_margin="5dp"
+        android:layout_marginStart="16sp"
+        android:layout_marginEnd="16sp"
         android:inputType="text"
         android:hint="@string/firstNameUser"
         android:autofillHints="name"/>
 
     <EditText
         android:id="@+id/lastNameUser"
-        android:layout_width="330dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_margin="5dp"
+        android:layout_marginStart="16sp"
+        android:layout_marginEnd="16sp"
         android:inputType="text"
         android:hint="@string/lastNameUser"
         android:autofillHints="name"/>
@@ -40,7 +61,8 @@
         android:id="@+id/emailUser"
         android:layout_width="330dp"
         android:layout_height="50dp"
-        android:layout_margin="5dp"
+        android:layout_marginStart="16sp"
+        android:layout_marginEnd="16sp"
         android:inputType="textEmailAddress"
         android:hint="@string/emailUser"
         android:autofillHints="emailAddress"/>
@@ -49,22 +71,25 @@
         android:id="@+id/passwordUser"
         android:layout_width="330dp"
         android:layout_height="50dp"
-        android:layout_margin="5dp"
+        android:layout_marginStart="16sp"
+        android:layout_marginEnd="16sp"
         android:inputType="textPassword"
         android:hint="@string/passwordUser"
         android:autofillHints="password"/>
 
     <RadioGroup
         android:id="@+id/userTypeGroup"
-        android:layout_width="330dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:layout_marginStart="16sp"
+        android:layout_marginEnd="16sp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/userType"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_margin="5sp"/>
 
         <RadioButton
             android:id="@+id/studentRadioBtn"
@@ -90,7 +115,7 @@
         android:id="@+id/addUserBtn"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="16dp"
         android:backgroundTint="@color/blue"
         android:padding="13dp"
         android:text="@string/addUser"

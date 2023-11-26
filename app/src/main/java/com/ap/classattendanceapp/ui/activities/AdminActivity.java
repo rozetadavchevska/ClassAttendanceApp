@@ -2,9 +2,11 @@ package com.ap.classattendanceapp.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -39,6 +41,15 @@ public class AdminActivity extends AppCompatActivity {
 
         Button addUser = findViewById(R.id.addUserBtn);
         addUser.setOnClickListener(v -> addUser());
+
+        ImageButton adminLogout = findViewById(R.id.adminLogout);
+
+        adminLogout.setOnClickListener(v -> {
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+            auth.signOut();
+            Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, LoginActivity.class));
+        });
     }
 
     private void addUser(){
