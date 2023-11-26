@@ -28,8 +28,8 @@
     <string name="addNewCourse">Add New Course</string>
     <string name="viewCourses">View Courses</string>
     <string name="myCourses">My Courses</string>
-    <string name="courseName">Name</string>
-    <string name="courseDescription">Description</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
     <string name="addCourse">Add Course</string>
 
     <string name="backBtn">Back</string>
@@ -39,6 +39,12 @@
     <string name="pastClasses">Past Classes</string>
 
     <string name="calendarText">Class Schedule</string>
-    <string name="addNewClass">Add Class</string>
+    <string name="addClass">Add Class</string>
+    <string name="addNewClass">Add New Class</string>
     <string name="viewClasses">View Classes</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+
+    <string name="classAttendance">Class Attendance</string>
+    <string name="searchAttendance">Search student, class, course, etc.</string>
 </resources>

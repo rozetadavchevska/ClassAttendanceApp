@@ -1,12 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.AttendanceFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:id="@+id/attendanceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/blue"
+        android:text="@string/classAttendance"
+        android:layout_margin="16dp"/>
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/attendanceSearch"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_below="@+id/attendanceTitle"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="name"
+        android:hint="@string/searchAttendance"
+        android:inputType="text" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/attendanceList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16sp"
+        android:layout_below="@id/attendanceSearch"
+        android:padding="16dp"/>
+
+</RelativeLayout>

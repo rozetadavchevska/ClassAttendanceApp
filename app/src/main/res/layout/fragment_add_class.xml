@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.AddClassFragment">
+
+    <LinearLayout
+        android:id="@+id/headerNewClass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/addClassBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="@string/backBtn"
+            android:backgroundTint="@color/white"/>
+
+        <TextView
+            android:id="@+id/addClassView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16sp"
+            android:layout_marginTop="16sp"
+            android:layout_marginEnd="16sp"
+            android:layout_marginBottom="16sp"
+            android:text="@string/addNewClass"
+            android:textColor="@color/blue"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textAlignment="textStart"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/headerNewClass">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/className"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="16sp"
+                android:autofillHints="name"
+                android:hint="@string/name"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/classDate"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_margin="16sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="16sp"
+                android:autofillHints="date"
+                android:hint="@string/date"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/classDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="16sp"
+                android:autofillHints="name"
+                android:hint="@string/description"
+                android:inputType="textMultiLine"
+                android:minHeight="50sp" />
+
+            <EditText
+                android:id="@+id/classTime"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_margin="16sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="16sp"
+                android:autofillHints="time"
+                android:hint="@string/time"
+                android:inputType="time" />
+
+            <Spinner
+                android:id="@+id/teacherSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_margin="16sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="16sp" />
+
+            <Button
+                android:id="@+id/addClassBtn"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="16sp"
+                android:backgroundTint="@color/blue"
+                android:padding="10sp"
+                android:text="@string/addClass"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

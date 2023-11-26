@@ -3,6 +3,8 @@ package com.ap.classattendanceapp.ui.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +22,12 @@ public class TeacherClassesFragment extends Fragment {
         ImageButton addClass = view.findViewById(R.id.addNewClass);
 
         addClass.setOnClickListener(v -> {
-
+            AddClassFragment addClassFragment = new AddClassFragment();
+            FragmentManager fragment = getParentFragmentManager();
+            FragmentTransaction fragmentTransaction = fragment.beginTransaction();
+            fragmentTransaction.replace(R.id.teacherFrameLayout, addClassFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
         });
 
         return view;

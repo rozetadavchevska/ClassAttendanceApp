@@ -12,27 +12,27 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
-    <ImageButton
-        android:id="@+id/addCourseBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_arrow_back"
-        android:contentDescription="@string/backBtn"
-        android:backgroundTint="@color/white"/>
+        <ImageButton
+            android:id="@+id/addCourseBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="@string/backBtn"
+            android:backgroundTint="@color/white"/>
 
-    <TextView
-        android:id="@+id/addCourseView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16sp"
-        android:layout_marginTop="16sp"
-        android:layout_marginEnd="16sp"
-        android:layout_marginBottom="16sp"
-        android:text="@string/addNewCourse"
-        android:textColor="@color/blue"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textAlignment="textStart"/>
+        <TextView
+            android:id="@+id/addCourseView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16sp"
+            android:layout_marginTop="16sp"
+            android:layout_marginEnd="16sp"
+            android:layout_marginBottom="16sp"
+            android:text="@string/addNewCourse"
+            android:textColor="@color/blue"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textAlignment="textStart"/>
     </LinearLayout>
 
     <EditText
@@ -41,7 +41,7 @@
         android:layout_height="50sp"
         android:inputType="text"
         android:layout_margin="16sp"
-        android:hint="@string/courseName"
+        android:hint="@string/name"
         android:autofillHints="name"
         android:layout_below="@+id/headerNewCourse"
         android:layout_centerHorizontal="true"/>
@@ -53,7 +53,7 @@
         android:minHeight="50sp"
         android:layout_margin="16sp"
         android:inputType="textMultiLine"
-        android:hint="@string/courseDescription"
+        android:hint="@string/description"
         android:autofillHints="name"
         android:layout_below="@+id/courseName"
         android:layout_centerHorizontal="true"/>
