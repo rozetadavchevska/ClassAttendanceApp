@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.ap.classattendanceapp.R;
 
@@ -19,8 +19,8 @@ public class TeacherCoursesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_teacher_courses, container, false);
 
-        Button addCourse = view.findViewById(R.id.buttonAddCourse);
-        Button viewCourses = view.findViewById(R.id.buttonViewCourses);
+        ImageButton addCourse = view.findViewById(R.id.buttonAddCourse);
+        ImageButton viewCourses = view.findViewById(R.id.buttonViewCourses);
 
 
         addCourse.setOnClickListener(v -> {

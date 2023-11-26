@@ -2,16 +2,17 @@ package com.ap.classattendanceapp.data.models;
 
 public class Attendance {
     private String attendanceId;
-    private String userId;
+    private String teacherId;
+    private String studentId;
     private String classId;
     private String courseId;
     private boolean isPresent;
 
     public Attendance(){}
 
-    public Attendance(String attendanceId, String userId, String classId, String courseId, boolean isPresent){
+    public Attendance(String attendanceId, String studentId, String classId, String courseId, boolean isPresent){
         this.attendanceId = attendanceId;
-        this.userId = userId;
+        this.studentId = studentId;
         this.classId = classId;
         this.courseId = courseId;
         this.isPresent = isPresent;
@@ -25,12 +26,16 @@ public class Attendance {
         this.attendanceId = attendanceId;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getTeacherId() { return teacherId; }
+
+    public void setTeacherId(String teacherId) { this.teacherId = teacherId; }
+
+    public String getStudentId() {
+        return studentId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setStudentId(String userId) {
+        this.studentId = studentId;
     }
 
     public String getClassId() {

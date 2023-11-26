@@ -34,4 +34,11 @@
 
     <string name="backBtn">Back</string>
     <string name="allCourses">All Courses</string>
+
+    <string name="upcomingClasses">Upcoming Classes</string>
+    <string name="pastClasses">Past Classes</string>
+
+    <string name="calendarText">Class Schedule</string>
+    <string name="addNewClass">Add Class</string>
+    <string name="viewClasses">View Classes</string>
 </resources>

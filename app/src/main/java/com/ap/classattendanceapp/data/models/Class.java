@@ -1,20 +1,25 @@
 package com.ap.classattendanceapp.data.models;
 
+import java.util.Date;
 import java.util.List;
 
 public class Class {
     private String classId;
     private String name;
     private String description;
-    private List<String> users;
+    private Date dateTime;
+    private String teacherId;
+    private List<String> studentIds;
 
     public Class(){}
 
-    public Class(String classId, String name, String description, List<String> users){
+    public Class(String classId, String name, String description, Date dateTime, String teacherId, List<String> studentIds){
         this.classId = classId;
         this.name = name;
         this.description = description;
-        this.users = users;
+        this.dateTime = dateTime;
+        this.teacherId = teacherId;
+        this.studentIds = studentIds;
     }
 
     public String getClassId() {
@@ -41,11 +46,19 @@ public class Class {
         this.description = description;
     }
 
-    public List<String> getUsers() {
-        return users;
+    public Date getDateTime() { return dateTime; }
+
+    public void setDateTime(Date dateTime) { this.dateTime = dateTime; }
+
+    public String getTeacherId() { return teacherId; }
+
+    public void setTeacherId(String teacherId) { this.teacherId = teacherId; }
+
+    public List<String> getStudentIds() {
+        return studentIds;
     }
 
-    public void setUsers(List<String> users) {
-        this.users = users;
+    public void setStudentIds(List<String> studentIds) {
+        this.studentIds = studentIds;
     }
 }

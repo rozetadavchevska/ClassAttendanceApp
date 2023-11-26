@@ -6,16 +6,18 @@ public class Course {
     private String courseId;
     private String name;
     private String description;
-    private List<String> users;
+    private List<String> teacherIds;
+    private List<String> studentIds;
     private List<String> classes;
 
     public Course(){}
 
-    public Course(String courseId, String name, String description, List<String> users, List<String> classes){
+    public Course(String courseId, String name, String description, List<String> teacherIds, List<String> studentIds, List<String> classes){
         this.courseId = courseId;
         this.name = name;
         this.description = description;
-        this.users = users;
+        this.teacherIds = teacherIds;
+        this.studentIds = studentIds;
         this.classes = classes;
     }
 
@@ -43,19 +45,21 @@ public class Course {
         this.description = description;
     }
 
-    public List<String> getUsers() {
-        return users;
+    public List<String> getTeacherIds() { return teacherIds; }
+
+    public void setTeacherIds(List<String> teacherIds) { this.teacherIds = teacherIds; }
+
+    public List<String> getStudentIds() {
+        return studentIds;
     }
 
-    public void setUsers(List<String> users) {
-        this.users = users;
+    public void setStudentIds(List<String> studentIds) {
+        this.studentIds = studentIds;
     }
 
     public List<String> getClasses() {
         return classes;
     }
 
-    public void setClasses(List<String> classes) {
-        this.classes = classes;
-    }
+    public void setClasses(List<String> classes) { this.classes = classes; }
 }

@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.AddNewCourseFragment">
 
+    <LinearLayout
+        android:id="@+id/headerNewCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
     <ImageButton
         android:id="@+id/addCourseBack"
         android:layout_width="wrap_content"
@@ -15,19 +22,18 @@
 
     <TextView
         android:id="@+id/addCourseView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16sp"
         android:layout_marginTop="16sp"
         android:layout_marginEnd="16sp"
         android:layout_marginBottom="16sp"
-        android:gravity="center"
-        android:minHeight="50sp"
         android:text="@string/addNewCourse"
         android:textColor="@color/blue"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_below="@+id/addCourseBack"/>
+        android:textAlignment="textStart"/>
+    </LinearLayout>
 
     <EditText
         android:id="@+id/courseName"
@@ -37,7 +43,7 @@
         android:layout_margin="16sp"
         android:hint="@string/courseName"
         android:autofillHints="name"
-        android:layout_below="@+id/addCourseView"
+        android:layout_below="@+id/headerNewCourse"
         android:layout_centerHorizontal="true"/>
 
     <EditText

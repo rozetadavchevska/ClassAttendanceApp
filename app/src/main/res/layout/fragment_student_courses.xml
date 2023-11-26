@@ -25,13 +25,14 @@
             android:textStyle="bold"
             android:textAlignment="textStart"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/allCourses"
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16sp"
-            android:backgroundTint="@color/blue"
-            android:text="@string/allCourses"/>
+            android:src="@drawable/ic_list"
+            android:layout_marginEnd="16sp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/addNewClass"/>
 
     </LinearLayout>
 
