@@ -1,24 +1,27 @@
 package com.ap.classattendanceapp.data.models;
 
-import java.util.Date;
 import java.util.List;
 
 public class Class {
     private String classId;
     private String name;
     private String description;
-    private Date dateTime;
+    private String date;
+    private String time;
     private String teacherId;
+    private String courseId;
     private List<String> studentIds;
 
     public Class(){}
 
-    public Class(String classId, String name, String description, Date dateTime, String teacherId, List<String> studentIds){
+    public Class(String classId, String name, String description, String date, String time, String teacherId, String courseId, List<String> studentIds){
         this.classId = classId;
         this.name = name;
         this.description = description;
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time= time;
         this.teacherId = teacherId;
+        this.courseId = courseId;
         this.studentIds = studentIds;
     }
 
@@ -46,19 +49,25 @@ public class Class {
         this.description = description;
     }
 
-    public Date getDateTime() { return dateTime; }
+    public String getDate() { return date; }
 
-    public void setDateTime(Date dateTime) { this.dateTime = dateTime; }
+    public void setDate(String date) { this.date = date; }
+
+    public String getTime() { return time; }
+
+    public void setTime(String time) { this.time = time; }
 
     public String getTeacherId() { return teacherId; }
 
     public void setTeacherId(String teacherId) { this.teacherId = teacherId; }
 
+    public String getCourseId() { return courseId; }
+
+    public void setCourseId(String courseId) { this.courseId = courseId; }
+
     public List<String> getStudentIds() {
         return studentIds;
     }
 
-    public void setStudentIds(List<String> studentIds) {
-        this.studentIds = studentIds;
-    }
+    public void setStudentIds(List<String> studentIds) { this.studentIds = studentIds; }
 }

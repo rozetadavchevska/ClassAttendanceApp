@@ -108,9 +108,7 @@ public class AddNewCourseFragment extends Fragment {
                         enrollTeacherToCourse(teacherId, courseId);
                         Toast.makeText(getActivity(), "Successfully added course", Toast.LENGTH_SHORT).show();
 
-                        name.getText().clear();
-                        description.getText().clear();
-                        courseSpinner.setSelection(0);
+                        clearInputFields();
                     })
                     .addOnFailureListener(v -> Toast.makeText(getActivity(), "Error: " + v.getMessage(), Toast.LENGTH_SHORT).show());
         }
@@ -129,22 +127,12 @@ public class AddNewCourseFragment extends Fragment {
 
     private void enrollTeacherToCourse(String teacherId, String courseId){
         DatabaseReference dataRefUsers = FirebaseDatabase.getInstance().getReference("users");
-        dataRefUsers.child(teacherId).child("coursesId").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<String> coursesIdList = new ArrayList<>();
-                for (DataSnapshot courseSnapshot : snapshot.getChildren()) {
-                    coursesIdList.add(courseSnapshot.getKey());
-                }
-                coursesIdList.add(courseId);
-                dataRefUsers.child(teacherId).child("coursesId").setValue(coursesIdList)
-                        .addOnFailureListener(error -> Toast.makeText(getActivity(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show());
-                Toast.makeText(getActivity(), "Successfully added course", Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getActivity(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        dataRefUsers.child(teacherId).child("coursesId").child(courseId).setValue(true);
+    }
+
+    private void clearInputFields(){
+        name.getText().clear();
+        description.getText().clear();
+        courseSpinner.setSelection(0);
     }
 }

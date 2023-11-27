@@ -34,6 +34,7 @@
 
     <string name="backBtn">Back</string>
     <string name="allCourses">All Courses</string>
+    <string name="course">Course</string>
 
     <string name="upcomingClasses">Upcoming Classes</string>
     <string name="pastClasses">Past Classes</string>
@@ -42,8 +43,8 @@
     <string name="addClass">Add Class</string>
     <string name="addNewClass">Add New Class</string>
     <string name="viewClasses">View Classes</string>
-    <string name="date">Date</string>
-    <string name="time">Time</string>
+    <string name="date">Date (dd-MM-yyyy)</string>
+    <string name="time">Time (HH:mm)</string>
 
     <string name="classAttendance">Class Attendance</string>
     <string name="searchAttendance">Search student, class, course, etc.</string>

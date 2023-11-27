@@ -91,20 +91,18 @@ public class AdminActivity extends AppCompatActivity {
                        usersRef.child(uid).setValue(addNewUser)
                                .addOnSuccessListener(e -> {
                                    Toast.makeText(this,"Successfully added user", Toast.LENGTH_SHORT).show();
-
-                                   firstName.getText().clear();
-                                   lastName.getText().clear();
-                                   email.getText().clear();
-                                   password.getText().clear();
-                                   userTypeGroup.clearCheck();
+                                   clearInputFields();
                                })
                                .addOnFailureListener(e -> Toast.makeText(this,"Error adding user: " + e.getMessage(), Toast.LENGTH_SHORT).show());
                    }
                 });
+    }
 
-
-
-
-
+    private void clearInputFields(){
+        firstName.getText().clear();
+        lastName.getText().clear();
+        email.getText().clear();
+        password.getText().clear();
+        userTypeGroup.clearCheck();
     }
 }
