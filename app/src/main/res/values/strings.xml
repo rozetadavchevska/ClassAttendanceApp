@@ -21,7 +21,7 @@
     <string name="passwordUser">Password</string>
     <string name="userType">User Type</string>
     <string name="student">Student</string>
-    <string name="teacher">Teacher</string>
+    <string name="teacher">Teacher </string>
     <string name="admin">Admin</string>
     <string name="addUser">Add New User</string>
 
@@ -35,6 +35,7 @@
     <string name="backBtn">Back</string>
     <string name="allCourses">All Courses</string>
     <string name="course">Course</string>
+    <string name="enroll">Enroll</string>
 
     <string name="upcomingClasses">Upcoming Classes</string>
     <string name="pastClasses">Past Classes</string>
