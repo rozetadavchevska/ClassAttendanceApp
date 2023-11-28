@@ -21,7 +21,9 @@
     <string name="passwordUser">Password</string>
     <string name="userType">User Type</string>
     <string name="student">Student</string>
-    <string name="teacher">Teacher </string>
+    <string name="teacher">Teacher</string>
+    <string name="teachers">Teachers:</string>
+    <string name="emptyTeacher"/>
     <string name="admin">Admin</string>
     <string name="addUser">Add New User</string>
 

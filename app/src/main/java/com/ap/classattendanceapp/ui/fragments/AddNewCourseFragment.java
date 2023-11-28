@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class AddNewCourseFragment extends Fragment {
@@ -99,13 +100,12 @@ public class AddNewCourseFragment extends Fragment {
             DataSnapshot selectedTeacherSnapshot = teachersList.get(courseSpinner.getSelectedItemPosition());
             String teacherId = selectedTeacherSnapshot.getKey();
 
-            List<String> teacherList = new ArrayList<>();
-            teacherList.add(teacherId);
 
-            Course newCourse = new Course(courseId, courseName, courseDescription, teacherList, new ArrayList<>(), new ArrayList<>());
+            Course newCourse = new Course(courseId, courseName, courseDescription, new HashMap<>(), new HashMap<>(), new HashMap<>());
             dataRef.child(courseId).setValue(newCourse)
                     .addOnSuccessListener(v -> {
                         enrollTeacherToCourse(teacherId, courseId);
+                        addTeacherToCourse(teacherId, courseId);
                         Toast.makeText(getActivity(), "Successfully added course", Toast.LENGTH_SHORT).show();
 
                         clearInputFields();
@@ -128,6 +128,11 @@ public class AddNewCourseFragment extends Fragment {
     private void enrollTeacherToCourse(String teacherId, String courseId){
         DatabaseReference dataRefUsers = FirebaseDatabase.getInstance().getReference("users");
         dataRefUsers.child(teacherId).child("coursesId").child(courseId).setValue(true);
+    }
+
+    private void addTeacherToCourse(String teacherId, String courseId){
+        DatabaseReference dataRefCourses = FirebaseDatabase.getInstance().getReference("courses");
+        dataRefCourses.child(courseId).child("teacherId").child(teacherId).setValue(true);
     }
 
     private void clearInputFields(){

@@ -1,6 +1,7 @@
 package com.ap.classattendanceapp.data.models;
 
 import java.util.List;
+import java.util.Map;
 
 public class User {
     private String userId;
@@ -9,14 +10,14 @@ public class User {
     private String firstName;
     private String lastName;
     private String userType;
-    private List<String> coursesId;
-    private List<String> classes;
+    private Map<String, Boolean> coursesId;
+    private Map<String, Boolean> classesIds;
     private List<String> attendedClasses;
 
     public User(){}
 
     public User(String userId, String userEmail, String userPassword, String firstName, String lastName,
-                String userType, List<String> coursesId, List<String> classes, List<String> attendedClasses){
+                String userType, Map<String, Boolean> coursesId, Map<String, Boolean> classesIds, List<String> attendedClasses){
         this.userId = userId;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
@@ -24,7 +25,7 @@ public class User {
         this.lastName = lastName;
         this.userType = userType;
         this.coursesId = coursesId;
-        this.classes = classes;
+        this.classesIds = classesIds;
         this.attendedClasses = attendedClasses;
     }
 
@@ -76,21 +77,15 @@ public class User {
         this.userType = userType;
     }
 
-    public List<String> getCoursesId() {
+    public Map<String, Boolean> getCoursesId() {
         return coursesId;
     }
 
-    public void setCoursesId(List<String> courses) {
-        this.coursesId = coursesId;
-    }
+    public void setClassesIds(Map<String, Boolean> classesIds) { this.classesIds = classesIds;}
 
-    public List<String> getClasses() {
-        return classes;
-    }
+    public Map<String, Boolean> getClassesIds() { return classesIds; }
 
-    public void setClasses(List<String> classes) {
-        this.classes = classes;
-    }
+    public void setCoursesId(Map<String, Boolean> coursesId) {this.coursesId = coursesId;}
 
     public List<String> getAttendedClasses() {
         return attendedClasses;

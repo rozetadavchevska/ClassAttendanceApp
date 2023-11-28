@@ -44,7 +44,7 @@
                 android:id="@+id/teacherCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/teacher"
+                android:text="@string/teachers"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:layout_margin="5sp"
@@ -54,7 +54,7 @@
                 android:id="@+id/teacherNameCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/teacher"
+                android:text="@string/emptyTeacher"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:layout_margin="5sp"/>

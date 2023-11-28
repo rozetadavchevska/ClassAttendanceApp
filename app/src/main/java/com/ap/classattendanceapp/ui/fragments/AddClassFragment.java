@@ -28,6 +28,7 @@ import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class AddClassFragment extends Fragment {
@@ -144,7 +145,7 @@ public class AddClassFragment extends Fragment {
         DataSnapshot selectedCourseSnapshot = coursesList.get(coursesSpinner.getSelectedItemPosition());
         String courseId = selectedCourseSnapshot.getKey();
 
-        Class newClass = new Class(classId, name, description, date, time, currentTeacherId, courseId, new ArrayList<>());
+        Class newClass = new Class(classId, name, description, date, time, currentTeacherId, courseId, new HashMap<>());
         if (classId != null) {
             classRef.child(classId).setValue(newClass)
                     .addOnSuccessListener(aVoid -> {

@@ -1,6 +1,6 @@
 package com.ap.classattendanceapp.data.models;
 
-import java.util.List;
+import java.util.Map;
 
 public class Class {
     private String classId;
@@ -10,11 +10,11 @@ public class Class {
     private String time;
     private String teacherId;
     private String courseId;
-    private List<String> studentIds;
+    private Map<String, Boolean> studentIds;
 
     public Class(){}
 
-    public Class(String classId, String name, String description, String date, String time, String teacherId, String courseId, List<String> studentIds){
+    public Class(String classId, String name, String description, String date, String time, String teacherId, String courseId, Map<String, Boolean> studentIds){
         this.classId = classId;
         this.name = name;
         this.description = description;
@@ -65,9 +65,9 @@ public class Class {
 
     public void setCourseId(String courseId) { this.courseId = courseId; }
 
-    public List<String> getStudentIds() {
+    public Map<String, Boolean> getStudentIds() {
         return studentIds;
     }
 
-    public void setStudentIds(List<String> studentIds) { this.studentIds = studentIds; }
+    public void setStudentIds(Map<String, Boolean> studentIds) { this.studentIds = studentIds; }
 }

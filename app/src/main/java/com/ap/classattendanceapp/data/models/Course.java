@@ -1,23 +1,23 @@
 package com.ap.classattendanceapp.data.models;
 
-import java.util.List;
+import java.util.Map;
 
 public class Course {
     private String courseId;
     private String name;
     private String description;
-    private List<String> teacherId;
-    private List<String> students;
-    private List<String> classes;
+    private Map<String, Boolean> teacherId;
+    private Map<String, Boolean> studentsIds;
+    private Map<String, Boolean> classes;
 
     public Course(){}
 
-    public Course(String courseId, String name, String description, List<String> teacherId, List<String> students, List<String> classes){
+    public Course(String courseId, String name, String description, Map<String, Boolean> teacherId, Map<String, Boolean> studentsIds, Map<String, Boolean> classes){
         this.courseId = courseId;
         this.name = name;
         this.description = description;
         this.teacherId = teacherId;
-        this.students = students;
+        this.studentsIds = studentsIds;
         this.classes = classes;
     }
 
@@ -45,21 +45,21 @@ public class Course {
         this.description = description;
     }
 
-    public List<String> getTeacherId() { return teacherId; }
+    public Map<String, Boolean> getTeacherId() { return teacherId; }
 
-    public void setTeacherId(List<String> teacherId) { this.teacherId = teacherId; }
+    public void setTeacherId(Map<String, Boolean> teacherId) { this.teacherId = teacherId; }
 
-    public List<String> getStudents() {
-        return students;
+    public Map<String, Boolean> getStudentsIds() {
+        return studentsIds;
     }
 
-    public void setStudents(List<String> students) {
-        this.students = students;
+    public void setStudentsIds(Map<String, Boolean> studentsIds) {
+        this.studentsIds = studentsIds;
     }
 
-    public List<String> getClasses() {
+    public Map<String, Boolean> getClasses() {
         return classes;
     }
 
-    public void setClasses(List<String> classes) { this.classes = classes; }
+    public void setClasses(Map<String, Boolean> classes) { this.classes = classes; }
 }
