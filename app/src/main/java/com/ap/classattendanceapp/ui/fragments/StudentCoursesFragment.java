@@ -74,6 +74,5 @@ public class StudentCoursesFragment extends Fragment {
 
             }
         });
-
     }
 }
