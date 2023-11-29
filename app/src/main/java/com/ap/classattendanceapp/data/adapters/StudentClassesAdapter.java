@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ap.classattendanceapp.R;
 import com.ap.classattendanceapp.data.models.Class;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,52 +18,51 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
-public class TeacherClassesAdapter extends RecyclerView.Adapter<TeacherClassesAdapter.ViewHolder> {
 
+public class StudentClassesAdapter extends RecyclerView.Adapter<StudentClassesAdapter.ViewHolder> {
     private List<Class> classesList;
-    public TeacherClassesAdapter(List<Class> classesList){
+    public StudentClassesAdapter(List<Class> classesList){
         this.classesList = classesList;
     }
     @NonNull
     @Override
-    public TeacherClassesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_class_view,parent,false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_class_view, parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TeacherClassesAdapter.ViewHolder holder, int position) {
-        Class classData = classesList.get(position);
-        String teacherId = classData.getTeacherId();
-        String courseId = classData.getCourseId();
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Class classItem = classesList.get(position);
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = auth.getCurrentUser();
-        String currentTeacherId = currentUser.getUid();
+        holder.className.setText(classItem.getName());
+        holder.classDescription.setText(classItem.getDescription());
 
-        if (currentTeacherId.equals(teacherId)) {
-            holder.className.setText(classData.getName());
-            holder.classDescription.setText(classData.getDescription());
-
-            fetchCourseName(courseId, holder.classCourse);
-            fetchTeacherName(teacherId, holder.classTeacher);
-
-            if (classData.getDate() != null && !classData.getDate().isEmpty()) {
-                holder.classDate.setText(classData.getDate());
-            } else {
-                holder.classDate.setText("No Date");
-            }
-
-            if (classData.getTime() != null && !classData.getTime().isEmpty()) {
-                holder.classTime.setText(classData.getTime());
-            } else {
-                holder.classTime.setText("No Time");
-            }
-
-            holder.itemView.setVisibility(View.VISIBLE);
+        if (classItem.getCourseId() != null) {
+            fetchCourseName(classItem.getCourseId(), holder.classCourse);
         } else {
-            holder.itemView.setVisibility(View.GONE);
+            holder.classCourse.setText("Unknown Course");
         }
+
+        if (classItem.getTeacherId() != null) {
+            fetchTeacherName(classItem.getTeacherId(), holder.classTeacher);
+        } else {
+            holder.classTeacher.setText("Unknown Teacher");
+        }
+
+        if (classItem.getDate() != null && !classItem.getDate().isEmpty()) {
+            holder.classDate.setText(classItem.getDate());
+        } else {
+            holder.classDate.setText("No Date");
+        }
+
+        if (classItem.getTime() != null && !classItem.getTime().isEmpty()) {
+            holder.classTime.setText(classItem.getTime());
+        } else {
+            holder.classTime.setText("No Time");
+        }
+
+        holder.itemView.setVisibility(View.VISIBLE);
     }
 
     private void fetchCourseName(String courseId, TextView textView) {

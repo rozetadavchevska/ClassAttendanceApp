@@ -17,6 +17,8 @@ import android.widget.ImageButton;
 import com.ap.classattendanceapp.R;
 import com.ap.classattendanceapp.data.adapters.TeacherClassesAdapter;
 import com.ap.classattendanceapp.data.models.Class;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -72,7 +74,7 @@ public class TeacherClassesFragment extends Fragment {
         return view;
     }
 
-    private void getClassesFromDatabase(){
+    private void getClassesFromDatabase() {
         DatabaseReference classRef = FirebaseDatabase.getInstance().getReference("classes");
         classRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -84,18 +86,32 @@ public class TeacherClassesFragment extends Fragment {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Class classData = dataSnapshot.getValue(Class.class);
                     if (classData != null) {
-                        classesList.add(classData);
-                        separateClassesByTime(classData);
+                        // Check if the class belongs to the current teacher's course
+                        if (isTeacherEnrolledInCourse(classData)) {
+                            classesList.add(classData);
+                            separateClassesByTime(classData);
+                        }
                     }
                 }
 
                 upcomingAdapter.notifyDataSetChanged();
                 pastAdapter.notifyDataSetChanged();
-
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle error if needed
+            }
         });
+    }
+
+    private boolean isTeacherEnrolledInCourse(Class classData) {
+        String teacherId = classData.getTeacherId();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+        String currentTeacherId = currentUser.getUid();
+
+        return currentTeacherId.equals(teacherId);
     }
 
     private void separateClassesByTime(Class classData) {
