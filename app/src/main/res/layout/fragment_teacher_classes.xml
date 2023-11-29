@@ -40,38 +40,58 @@
     </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/upcomingClass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16sp"
-        android:text="@string/upcomingClasses"
-        android:layout_below="@+id/headerClasses"
-        android:textColor="@color/blue"
-        android:textSize="18sp"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/upcomingClassView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16sp"
-        android:layout_below="@+id/upcomingClass"/>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/headerClasses">
 
-    <TextView
-        android:id="@+id/pastClass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pastClasses"
-        android:layout_margin="16sp"
-        android:layout_below="@+id/upcomingClassView"
-        android:textColor="@color/blue"
-        android:textSize="18sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pastClassView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16sp"
-        android:layout_below="@+id/pastClass"/>
+            <TextView
+                android:id="@+id/upcomingClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="16sp"
+                android:text="@string/upcomingClasses"
+                android:textColor="@color/blue"
+                android:textSize="18sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/upcomingClassView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp" >
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/pastClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="16sp"
+                android:text="@string/pastClasses"
+                android:textColor="@color/blue"
+                android:textSize="18sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/pastClassView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp" />
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

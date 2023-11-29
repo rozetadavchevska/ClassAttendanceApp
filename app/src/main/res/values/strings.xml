@@ -48,6 +48,8 @@
     <string name="viewClasses">View Classes</string>
     <string name="date">Date (dd-MM-yyyy)</string>
     <string name="time">Time (HH:mm)</string>
+    <string name="edit">Edit</string>
+    <string name="dateTime">Date and Time:</string>
 
     <string name="classAttendance">Class Attendance</string>
     <string name="searchAttendance">Search student, class, course, etc.</string>

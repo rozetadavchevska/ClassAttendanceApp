@@ -30,6 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AddClassFragment extends Fragment {
     private EditText className;
@@ -75,9 +76,9 @@ public class AddClassFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 coursesList = new ArrayList<>();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    // Only add courses that the current teacher teaches
-                    List<String> teachers = dataSnapshot.child("teacherId").getValue(new GenericTypeIndicator<List<String>>() {});
-                    if (teachers != null && teachers.contains(currentTeacherId)) {
+                    GenericTypeIndicator<Map<String, Boolean>> teacherIdType = new GenericTypeIndicator<Map<String, Boolean>>() {};
+                    Map<String, Boolean> teachers = dataSnapshot.child("teacherId").getValue(teacherIdType);
+                    if (teachers != null && teachers.containsKey(currentTeacherId) && teachers.get(currentTeacherId)) {
                         coursesList.add(dataSnapshot);
                     }
                 }
