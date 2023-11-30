@@ -19,12 +19,12 @@
         android:icon="@drawable/ic_classes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    <item
-        android:id="@+id/calendar"
-        android:title="@string/calendar"
-        android:icon="@drawable/ic_calendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+<!--    <item-->
+<!--        android:id="@+id/calendar"-->
+<!--        android:title="@string/calendar"-->
+<!--        android:icon="@drawable/ic_calendar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"/>-->
     <item
         android:id="@+id/profile"
         android:title="@string/profile"

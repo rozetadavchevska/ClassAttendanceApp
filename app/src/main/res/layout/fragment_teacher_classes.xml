@@ -54,10 +54,7 @@
                 android:id="@+id/upcomingClass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16sp"
                 android:layout_marginStart="16sp"
-                android:layout_marginTop="16sp"
-                android:layout_marginEnd="16sp"
                 android:layout_marginBottom="16sp"
                 android:text="@string/upcomingClasses"
                 android:textColor="@color/blue"
@@ -67,8 +64,7 @@
                 android:id="@+id/upcomingClassView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16sp"
-                android:layout_marginEnd="16sp" >
+                android:layout_marginBottom="10sp" >
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -76,10 +72,8 @@
                 android:id="@+id/pastClass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16sp"
                 android:layout_marginStart="16sp"
                 android:layout_marginTop="16sp"
-                android:layout_marginEnd="16sp"
                 android:layout_marginBottom="16sp"
                 android:text="@string/pastClasses"
                 android:textColor="@color/blue"
@@ -89,8 +83,7 @@
                 android:id="@+id/pastClassView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16sp"
-                android:layout_marginEnd="16sp" />
+                android:layout_marginBottom="10sp" />
         </LinearLayout>
     </ScrollView>
 

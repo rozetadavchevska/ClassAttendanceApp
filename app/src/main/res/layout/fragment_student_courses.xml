@@ -41,7 +41,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/headerCourses"
-        android:layout_margin="16sp"
+        android:layout_marginStart="16sp"
+        android:layout_marginBottom="16sp"
         android:text="@string/myCourses"
         android:textColor="@color/blue"
         android:textSize="18sp" />
@@ -50,8 +51,7 @@
         android:id="@+id/studentCourses"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16sp"
-        android:layout_marginRight="16sp"
+        android:layout_marginBottom="10sp"
         android:layout_below="@+id/studentCourseText"/>
 
 </RelativeLayout>

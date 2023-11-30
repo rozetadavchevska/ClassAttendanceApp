@@ -6,8 +6,8 @@
     android:backgroundTint="@color/blue"
     app:contentPadding="10sp"
     app:cardCornerRadius="15dp"
-    android:layout_marginTop="5sp"
-    android:layout_marginBottom="5sp"
+    app:cardElevation="5dp"
+    android:layout_margin="5sp"
     android:id="@+id/courseCard">
 
     <LinearLayout

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,55 +10,107 @@
 
     <ImageView
         android:id="@+id/profileImg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="78dp"
+        android:layout_height="68dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
         android:contentDescription="@string/profile"
         android:src="@drawable/ic_profile"
-        android:layout_centerHorizontal="true"  />
+        android:layout_centerHorizontal="true"/>
 
-    <TextView
-        android:id="@+id/fNameProfile"
+    <LinearLayout
+        android:id="@+id/fullName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/profileImg"
-        android:layout_margin="5dp"
-        android:text="@string/firstNameUser"
-        android:textSize="18sp"
-        android:layout_centerHorizontal="true"  />
+        android:layout_margin="10sp"
+        android:layout_centerHorizontal="true">
 
-    <TextView
-        android:id="@+id/lNameProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="@string/lastNameUser"
-        android:textSize="18sp"
-        android:layout_below="@+id/fNameProfile"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:id="@+id/fNameProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:text="@string/firstNameUser"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/lNameProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/lastNameUser"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/emailProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:text="@string/emailUser"
         android:textSize="18sp"
-        android:layout_below="@+id/lNameProfile"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/fullName"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/editProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emailProfile"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/white"
+        android:padding="15dp"
+        android:text="@string/editProfile"
+        android:textColor="@color/blue"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/ic_edit"
+        app:iconGravity="textStart"
+        app:iconTint="@color/blue" />
+
+    <Button
+        android:id="@+id/changeEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editProfile"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/white"
+        android:padding="15dp"
+        android:text="@string/changeEmail"
+        android:textColor="@color/blue"
+        app:icon="@drawable/ic_email"
+        app:iconGravity="textStart"
+        app:iconTint="@color/blue" />
+
+    <Button
+        android:id="@+id/changePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/changeEmail"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/white"
+        android:padding="15dp"
+        android:text="@string/changePassword"
+        android:textColor="@color/blue"
+        app:icon="@drawable/ic_lock"
+        app:iconGravity="textStart"
+        app:iconTint="@color/blue" />
 
     <Button
         android:id="@+id/logoutBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="200sp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/emailProfile"
-        android:layout_margin="5dp"
-        android:backgroundTint="@color/blue"
+        android:layout_below="@+id/changePassword"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:padding="5dp"
         android:text="@string/logout"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

@@ -11,6 +11,10 @@
     <string name="calendar">Calendar</string>
     <string name="attendance">Attendance</string>
     <string name="profile">Profile</string>
+    <string name="editProfile">Edit profile</string>
+    <string name="settings">Settings</string>
+    <string name="changeEmail">Change email</string>
+    <string name="changePassword">Change password</string>
 
     <string name="homeText">Attend upcoming classes</string>
 
@@ -53,4 +57,6 @@
 
     <string name="classAttendance">Class Attendance</string>
     <string name="searchAttendance">Search student, class, course, etc.</string>
+    <string name="attend">Attend</string>
+    <string name="review">Review</string>
 </resources>
