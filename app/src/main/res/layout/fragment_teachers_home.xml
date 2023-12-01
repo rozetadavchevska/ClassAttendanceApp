@@ -1,12 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.TeacherHomeFragment">
 
     <TextView
+        android:id="@+id/dashboard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:text="@string/dashboard"
+        android:textColor="@color/blue"
+        android:textSize="24sp"
+        android:layout_margin="16sp"
+        android:textStyle="bold"/>
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/dashboard">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/dashAddCourse"
+                android:layout_width="120sp"
+                android:layout_height="120sp"
+                android:layout_margin="10sp"
+                android:text="@string/addCourse"
+                android:textColor="@color/orange"
+                android:textStyle="bold"
+                app:cornerRadius="20sp"
+                app:icon="@drawable/ic_add_course"
+                app:iconGravity="textTop"
+                app:iconPadding="10dp"
+                app:iconSize="40dp"
+                app:iconTint="@color/orange"
+                android:padding="10sp"
+                android:backgroundTint="@color/offWhite" />
+
+            <Button
+                android:id="@+id/dashAddClass"
+                android:layout_width="120sp"
+                android:layout_height="120sp"
+                android:layout_margin="10sp"
+                android:text="@string/addClass"
+                android:textColor="@color/orange"
+                android:textStyle="bold"
+                app:cornerRadius="20sp"
+                app:icon="@drawable/ic_add_class"
+                app:iconGravity="textTop"
+                app:iconPadding="10dp"
+                app:iconSize="40dp"
+                app:iconTint="@color/orange"
+                android:padding="10sp"
+                android:backgroundTint="@color/offWhite" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/dashAddSurvey"
+                android:layout_width="120sp"
+                android:layout_height="120sp"
+                android:layout_margin="10sp"
+                android:text="@string/survey"
+                android:textColor="@color/orange"
+                android:textStyle="bold"
+                app:cornerRadius="20sp"
+                app:icon="@drawable/ic_survey"
+                app:iconGravity="textTop"
+                app:iconPadding="10dp"
+                app:iconSize="40dp"
+                app:iconTint="@color/orange"
+                android:padding="10sp"
+                android:backgroundTint="@color/offWhite" />
+
+            <Button
+                android:id="@+id/dashCheckReviews"
+                android:layout_width="120sp"
+                android:layout_height="120sp"
+                android:layout_margin="10sp"
+                android:text="@string/reviews"
+                android:textColor="@color/orange"
+                android:textStyle="bold"
+                app:cornerRadius="20sp"
+                app:icon="@drawable/ic_reviews"
+                app:iconGravity="textTop"
+                app:iconPadding="10dp"
+                app:iconSize="40dp"
+                app:iconTint="@color/orange"
+                android:padding="10sp"
+                android:backgroundTint="@color/offWhite" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/dashAnalysis"
+                android:layout_width="120sp"
+                android:layout_height="120sp"
+                android:layout_margin="10sp"
+                android:text="@string/analysis"
+                android:textColor="@color/orange"
+                android:textStyle="bold"
+                app:cornerRadius="20sp"
+                app:icon="@drawable/ic_analysis"
+                app:iconGravity="textTop"
+                app:iconPadding="10dp"
+                app:iconSize="40dp"
+                app:iconTint="@color/orange"
+                android:padding="10sp"
+                android:backgroundTint="@color/offWhite" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

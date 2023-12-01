@@ -34,35 +34,40 @@ public class StudentClassesAdapter extends RecyclerView.Adapter<StudentClassesAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Class classItem = classesList.get(position);
+        if(classItem != null){
+            holder.className.setText(classItem.getName());
+            holder.classDescription.setText(classItem.getDescription());
 
-        holder.className.setText(classItem.getName());
-        holder.classDescription.setText(classItem.getDescription());
+            if (classItem.getCourseId() != null) {
+                fetchCourseName(classItem.getCourseId(), holder.classCourse);
+            } else {
+                holder.classCourse.setText("Unknown Course");
+            }
 
-        if (classItem.getCourseId() != null) {
-            fetchCourseName(classItem.getCourseId(), holder.classCourse);
+            if (classItem.getTeacherId() != null) {
+                fetchTeacherName(classItem.getTeacherId(), holder.classTeacher);
+            } else {
+                holder.classTeacher.setText("Unknown Teacher");
+            }
+
+            if (classItem.getDate() != null && !classItem.getDate().isEmpty()) {
+                holder.classDate.setText(classItem.getDate());
+            } else {
+                holder.classDate.setText("No Date");
+            }
+
+            if (classItem.getTime() != null && !classItem.getTime().isEmpty()) {
+                holder.classTime.setText(classItem.getTime());
+            } else {
+                holder.classTime.setText("No Time");
+            }
+
+            holder.itemView.setVisibility(View.VISIBLE);
         } else {
-            holder.classCourse.setText("Unknown Course");
+            holder.itemView.setVisibility(View.GONE);
         }
 
-        if (classItem.getTeacherId() != null) {
-            fetchTeacherName(classItem.getTeacherId(), holder.classTeacher);
-        } else {
-            holder.classTeacher.setText("Unknown Teacher");
-        }
 
-        if (classItem.getDate() != null && !classItem.getDate().isEmpty()) {
-            holder.classDate.setText(classItem.getDate());
-        } else {
-            holder.classDate.setText("No Date");
-        }
-
-        if (classItem.getTime() != null && !classItem.getTime().isEmpty()) {
-            holder.classTime.setText(classItem.getTime());
-        } else {
-            holder.classTime.setText("No Time");
-        }
-
-        holder.itemView.setVisibility(View.VISIBLE);
     }
 
     private void fetchCourseName(String courseId, TextView textView) {

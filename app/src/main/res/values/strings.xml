@@ -17,6 +17,10 @@
     <string name="changePassword">Change password</string>
 
     <string name="homeText">Attend upcoming classes</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="survey">Add Survey</string>
+    <string name="reviews">Check Reviews</string>
+    <string name="analysis">Analysis</string>
 
     <string name="adminText">Admin Panel</string>
     <string name="firstNameUser">First Name</string>

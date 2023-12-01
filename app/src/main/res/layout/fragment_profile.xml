@@ -40,7 +40,6 @@
             android:id="@+id/lNameProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:text="@string/lastNameUser"
             android:textSize="18sp"/>
 
@@ -111,6 +110,7 @@
         android:layout_marginBottom="5dp"
         android:padding="5dp"
         android:text="@string/logout"
+        android:backgroundTint="@color/blue"
         android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
