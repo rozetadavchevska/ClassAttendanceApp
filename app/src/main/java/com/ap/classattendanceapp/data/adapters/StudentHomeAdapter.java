@@ -64,6 +64,8 @@ public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.
         }
 
         holder.itemView.setVisibility(View.VISIBLE);
+
+
     }
 
     private void fetchCourseName(String courseId, TextView textView) {

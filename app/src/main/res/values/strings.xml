@@ -31,7 +31,7 @@
     <string name="student">Student</string>
     <string name="teacher">Teacher</string>
     <string name="teachers">Teachers:</string>
-    <string name="emptyTeacher"/>
+    <string name="emptyTeacher" />
     <string name="admin">Admin</string>
     <string name="addUser">Add New User</string>
 
@@ -63,4 +63,13 @@
     <string name="searchAttendance">Search student, class, course, etc.</string>
     <string name="attend">Attend</string>
     <string name="review">Review</string>
+    <string name="leaveReview">Leave a review</string>
+    <string name="timeReview">Class time and pace management</string>
+    <string name="presentationReview">Teacher organization and presentation</string>
+    <string name="importanceReview">Importance of the material</string>
+    <string name="leaveComment">Leave a comment for improvement</string>
+    <string name="bad">Bad</string>
+    <string name="ok">Okay</string>
+    <string name="good">Good</string>
+    <string name="great">Great</string>
 </resources>

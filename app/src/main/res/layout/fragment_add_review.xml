@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.AddReviewFragment">
+
+    <LinearLayout
+        android:id="@+id/headerLeaveReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/leaveReviewBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="@string/backBtn"
+            android:backgroundTint="@color/white"/>
+
+        <TextView
+            android:id="@+id/leaveReviewView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16sp"
+            android:layout_marginTop="16sp"
+            android:layout_marginEnd="16sp"
+            android:layout_marginBottom="16sp"
+            android:text="@string/leaveReview"
+            android:textColor="@color/blue"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textAlignment="textStart"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/headerLeaveReview">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/timePace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/timeReview"
+                android:textColor="@color/blue"
+                android:textSize="18sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"/>
+
+            <RadioGroup
+                android:id="@+id/timeAndPace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp">
+
+                <RadioButton
+                    android:id="@+id/timeBadBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bad"
+                    android:layout_margin="5sp"/>
+
+                <RadioButton
+                    android:id="@+id/timeOkBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ok"
+                    android:layout_margin="5sp"/>
+
+                <RadioButton
+                    android:id="@+id/timeGoodBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/good"
+                    android:layout_margin="5sp"/>
+
+                <RadioButton
+                    android:id="@+id/timeGreatBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/great"
+                    android:layout_margin="5sp"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/presentation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/presentationReview"
+                android:textColor="@color/blue"
+                android:textSize="18sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"/>
+
+            <RadioGroup
+                android:id="@+id/orgAndPresentation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp">
+
+                <RadioButton
+                    android:id="@+id/presentationBadBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bad"
+                    android:layout_margin="5sp"/>
+
+                <RadioButton
+                    android:id="@+id/presentationOkBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ok"
+                    android:layout_margin="5sp"/>
+
+                <RadioButton
+                    android:id="@+id/presentationGoodBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/good"
+                    android:layout_margin="5sp"/>
+
+                <RadioButton
+                    android:id="@+id/presentationGreATBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/great"
+                    android:layout_margin="5sp"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/importance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/importanceReview"
+                android:textColor="@color/blue"
+                android:textSize="18sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"/>
+
+            <RadioGroup
+                android:id="@+id/importantMaterial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp">
+
+                <RadioButton
+                    android:id="@+id/importanceBadBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bad"
+                    android:layout_margin="5sp"/>
+
+                <RadioButton
+                    android:id="@+id/importanceOkBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ok"
+                    android:layout_margin="5sp"/>
+
+                <RadioButton
+                    android:id="@+id/importanceGoodBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/good"
+                    android:layout_margin="5sp"/>
+
+                <RadioButton
+                    android:id="@+id/importanceGreatBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/great"
+                    android:layout_margin="5sp"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/leaveComment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/leaveComment"
+                android:textColor="@color/blue"
+                android:textSize="18sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"/>
+
+            <EditText
+                android:id="@+id/commentText"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"
+                android:hint="@string/leaveComment"
+                android:autofillHints="name"/>
+
+            <Button
+                android:id="@+id/leaveReviewBtn"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:text="@string/leaveReview"
+                android:layout_gravity="center"
+                android:layout_margin="16sp"
+                android:backgroundTint="@color/blue"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
