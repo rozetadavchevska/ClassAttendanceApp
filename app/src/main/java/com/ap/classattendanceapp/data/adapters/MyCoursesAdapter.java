@@ -56,7 +56,6 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<MyCoursesAdapter.View
         TextView courseDescription;
         TextView teacherName;
         boolean isEnrolled;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -68,22 +67,18 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<MyCoursesAdapter.View
 
     private void userIsEnrolled(String currentUserId, String courseId, ViewHolder holder, Course course, Map<String,Boolean> teacherId){
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(currentUserId);
+
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                boolean isEnrolled;
-                if(snapshot.exists()){
-                    DataSnapshot coursesIdSnapshot = snapshot.child("coursesId");
-                    isEnrolled = coursesIdSnapshot.hasChild(courseId);
-                } else {
-                    isEnrolled = false;
-                }
+                boolean isEnrolled = snapshot.exists() && snapshot.child("coursesId").hasChild(courseId);
 
-                if (isEnrolled){
+                if (isEnrolled) {
                     holder.isEnrolled = true;
                     holder.courseName.setText(course.getName());
                     holder.courseDescription.setText(course.getDescription());
                     getTeacherName(course.getCourseId(), teacherId, holder.teacherName);
+                    holder.itemView.setVisibility(View.VISIBLE);
                 } else {
                     holder.isEnrolled = false;
                     holder.itemView.setVisibility(View.GONE);

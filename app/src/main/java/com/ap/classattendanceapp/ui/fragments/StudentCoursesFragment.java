@@ -17,6 +17,8 @@ import android.widget.ImageButton;
 import com.ap.classattendanceapp.R;
 import com.ap.classattendanceapp.data.adapters.MyCoursesAdapter;
 import com.ap.classattendanceapp.data.models.Course;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +30,7 @@ import java.util.List;
 
 public class StudentCoursesFragment extends Fragment {
     private List<Course> coursesList;
+    private List<Course> enrolledCourses;
     private MyCoursesAdapter adapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,25 +49,37 @@ public class StudentCoursesFragment extends Fragment {
 
         RecyclerView recyclerView = view.findViewById(R.id.studentCourses);
         coursesList = new ArrayList<>();
-        adapter = new MyCoursesAdapter(coursesList);
+
+        getCoursesFromDatabase();
+
+        adapter = new MyCoursesAdapter(enrolledCourses);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setAdapter(adapter);
-        getCoursesFromDatabase();
 
         return view;
     }
 
     private void getCoursesFromDatabase(){
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+        String currentUserId = currentUser.getUid();
+
+
+
         DatabaseReference coursesRef = FirebaseDatabase.getInstance().getReference("courses");
+        enrolledCourses = new ArrayList<>();
         coursesRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 coursesList.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Course course = dataSnapshot.getValue(Course.class);
-                    if(course != null){
-                        coursesList.add(course);
-                    }
+
+                        if(course != null){
+                            coursesList.add(course);
+                            checkUserEnrolled(coursesList, currentUserId);
+                        }
+
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -73,6 +88,28 @@ public class StudentCoursesFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+        });
+    }
+
+    private void checkUserEnrolled(List<Course> fullCoursesList, String userId){
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId).child("coursesId");
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                enrolledCourses.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String enrolledCourseId = dataSnapshot.getKey();
+                    for (Course course : fullCoursesList) {
+                        if (course.getCourseId().equals(enrolledCourseId)) {
+                            enrolledCourses.add(course);
+                        }
+                    }
+                }
+                adapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
     }
 }

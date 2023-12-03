@@ -2,20 +2,12 @@ package com.ap.classattendanceapp.ui.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Notification;
-import android.app.NotificationManager;
+import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 
 import com.ap.classattendanceapp.R;
@@ -24,8 +16,7 @@ import com.ap.classattendanceapp.ui.fragments.StudentClassesFragment;
 import com.ap.classattendanceapp.ui.fragments.StudentCoursesFragment;
 import com.ap.classattendanceapp.ui.fragments.StudentHomeFragment;
 import com.ap.classattendanceapp.ui.fragments.ProfileFragment;
-//import com.ap.classattendanceapp.ui.receivers.NotificationChannelHelper;
-//import com.ap.classattendanceapp.ui.receivers.NotificationReceiver;
+import com.ap.classattendanceapp.ui.receivers.NotificationReceiver;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,17 +29,16 @@ import com.google.firebase.database.ValueEventListener;
 import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.ZoneId;
 import org.threeten.bp.format.DateTimeFormatter;
-import org.threeten.bp.temporal.ChronoUnit;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class StudentActivity extends AppCompatActivity {
-//    private FirebaseAuth auth;
-//    private FirebaseUser currentUser;
-//    private String currentUserId;
-//    private List<Class> upcomingClassesList;
+    private FirebaseAuth auth;
+    private FirebaseUser currentUser;
+    private String currentUserId;
+    private List<Class> upcomingClassesList;
 //    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 //    private LocationManager locationManager;
 
@@ -64,17 +54,17 @@ public class StudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
         getSupportFragmentManager().beginTransaction().replace(R.id.studentFrameLayout, homeFragment).commit();
-//        upcomingClassesList = new ArrayList<>();
 
-//        auth = FirebaseAuth.getInstance();
-//        currentUser = auth.getCurrentUser();
-//        currentUserId = currentUser.getUid();
+        upcomingClassesList = new ArrayList<>();
+
+        auth = FirebaseAuth.getInstance();
+        currentUser = auth.getCurrentUser();
+        currentUserId = currentUser.getUid();
 
         bottomNav = findViewById(R.id.studentBottomNav);
 //        requestLocationPermissions();
-//
-//        getClassesFromDatabase();
 
+        getClassesFromDatabase();
 
         bottomNav.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
@@ -132,123 +122,112 @@ public class StudentActivity extends AppCompatActivity {
 //        } else {
 //        }
 //    }
-//
-//    private void getClassesFromDatabase() {
-//        DatabaseReference courseRef = FirebaseDatabase.getInstance().getReference("users").child(currentUserId).child("coursesId");
-//        courseRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                List<String> courseIds = new ArrayList<>();
-//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    String courseId = dataSnapshot.getKey();
-//                    courseIds.add(courseId);
-//                }
-//
-//                for (String courseId : courseIds) {
-//                    DatabaseReference classRef = FirebaseDatabase.getInstance().getReference("courses").child(courseId).child("classesIds");
-//                    classRef.addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                            for (DataSnapshot classSnapshot : snapshot.getChildren()) {
-//                                String classId = classSnapshot.getKey();
-//                                DatabaseReference classDetailsRef = FirebaseDatabase.getInstance().getReference("classes").child(classId);
-//                                classDetailsRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//                                    @Override
-//                                    public void onDataChange(@NonNull DataSnapshot classDetailsSnapshot) {
-//                                        Class classData = classDetailsSnapshot.getValue(Class.class);
-//                                        if (classData != null) {
-//                                            separateClassesByTime(classData);
-//                                        }
-//
-//
-//
-//                                    }
-//                                    @Override
-//                                    public void onCancelled(@NonNull DatabaseError error) {}
-//                                });
-//                            }
-//                        }
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {}
-//                    });
-//
-//                }
-//                setUpNotifications();
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {}
-//        });
-//    }
-//
-//    private void separateClassesByTime(Class classData) {
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy, HH:mm");
-//        LocalDateTime currentDateTime = LocalDateTime.now();
-//
-//        String classDateTimeString = classData.getDate() + ", " + classData.getTime();
-//        LocalDateTime classDateTime = LocalDateTime.parse(classDateTimeString, formatter);
-//
-//        if(classDateTime.isAfter(currentDateTime)){
-//            upcomingClassesList.add(classData);
-//        }
-//
-//        Collections.sort(upcomingClassesList, (c1, c2) -> {
-//            LocalDateTime time1 = parseDateTime(c1.getDate(), c1.getTime(), formatter);
-//            LocalDateTime time2 = parseDateTime(c2.getDate(), c2.getTime(), formatter);
-//            return time1.compareTo(time2);
-//        });
-//
-//    }
-//
-//    private LocalDateTime parseDateTime(String date, String time, DateTimeFormatter formatter) {
-//        String dateTimeString = date + ", " + time;
-//        return LocalDateTime.parse(dateTimeString, formatter);
-//    }
-//
-//    private void setUpNotifications() {
-//         for (Class classModel: upcomingClassesList) {
-//             setNotification(classModel);
-//         }
-//    }
-//
-//    private void setNotification(Class classModel) {
-//        if (classModel != null) {
-//            Intent intent = new Intent(this, NotificationReceiver.class);
-//            intent.putExtra("className", classModel.getName());
-//
-//            PendingIntent pendingIntent = PendingIntent.getBroadcast(
-//                    this,
-//                    generateUniqueId(),
-//                    intent,
-//                    PendingIntent.FLAG_UPDATE_CURRENT
-//            );
-//
-//            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy, HH:mm");
-//            LocalDateTime classDateTime = parseDateTime(classModel.getDate(), classModel.getTime(), formatter);
-//            LocalDateTime currentDateTime = LocalDateTime.now();
-//            LocalDateTime notificationTime = classDateTime.minusHours(2);
-//
-//            long hoursDifference = ChronoUnit.HOURS.between(currentDateTime, classDateTime);
-//            long desiredNotificationTime = 2;
-//
-//            if (hoursDifference <= desiredNotificationTime) {
-//                Notification notification = new NotificationCompat.Builder(this, NotificationChannelHelper.getChannelId())
-//                        .setContentTitle("Class Reminder")
-//                        .setContentText("Your class " + classModel.getName() + " starts in 2 hours!")
-//                        .setSmallIcon(R.drawable.ic_notification)
-//                        .setContentIntent(pendingIntent)
-//                        .setWhen(notificationTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
-//                        .build();
-//
-//                notificationManager.notify(generateUniqueId(), notification);
-//            }
-//        }
-//    }
-//
-//    private static int generateUniqueId() {
-//        return (int) System.currentTimeMillis();
-//    }
+
+    private void getClassesFromDatabase() {
+        DatabaseReference courseRef = FirebaseDatabase.getInstance().getReference("users").child(currentUserId).child("coursesId");
+        courseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<String> courseIds = new ArrayList<>();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String courseId = dataSnapshot.getKey();
+                    courseIds.add(courseId);
+                }
+
+                upcomingClassesList.clear();
+
+                for (String courseId : courseIds) {
+                    DatabaseReference classRef = FirebaseDatabase.getInstance().getReference("courses").child(courseId).child("classesIds");
+                    classRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot classSnapshot : snapshot.getChildren()) {
+                                String classId = classSnapshot.getKey();
+                                DatabaseReference classDetailsRef = FirebaseDatabase.getInstance().getReference("classes").child(classId);
+                                classDetailsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot classDetailsSnapshot) {
+                                        Class classData = classDetailsSnapshot.getValue(Class.class);
+                                        if (classData != null) {
+                                            separateClassesByTime(classData);
+                                        }
+                                        setUpNotifications();
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {}
+                                });
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {}
+                    });
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+
+    }
+
+    private void separateClassesByTime(Class classData) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy, HH:mm");
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        LocalDateTime classDateTime = parseDateTime(classData.getDate(), classData.getTime(), formatter);
+
+        if(classDateTime.isAfter(currentDateTime)){
+            upcomingClassesList.add(classData);
+        }
+
+        Collections.sort(upcomingClassesList, (c1, c2) -> {
+            LocalDateTime time1 = parseDateTime(c1.getDate(), c1.getTime(), formatter);
+            LocalDateTime time2 = parseDateTime(c2.getDate(), c2.getTime(), formatter);
+            return time1.compareTo(time2);
+        });
+
+    }
+
+    private LocalDateTime parseDateTime(String date, String time, DateTimeFormatter formatter) {
+        String dateTimeString = date + ", " + time;
+        return LocalDateTime.parse(dateTimeString, formatter);
+    }
+
+    private void setUpNotifications() {
+         for (Class classModel: upcomingClassesList) {
+             scheduleNotificationAlarm(classModel);
+         }
+    }
+
+    @SuppressLint({"ScheduleAlarm", "ScheduleExactAlarm"})
+    private void scheduleNotificationAlarm(Class classModel) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, NotificationReceiver.class);
+        intent.putExtra("className", classModel.getName());
+
+        int notificationId = generateUniqueId(classModel);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this,
+                notificationId,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+        );
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy, HH:mm");
+        LocalDateTime classDateTime = parseDateTime(classModel.getDate(), classModel.getTime(), formatter);
+        LocalDateTime notificationTime = classDateTime.minusHours(2);
+        long triggerAtMillis = notificationTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+
+        if (notificationTime.isAfter(LocalDateTime.now())) {
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis, pendingIntent);
+        }
+    }
+
+    private static int generateUniqueId(Class classModel) {
+        String uniqueId = classModel.getName() + classModel.getDate() + classModel.getTime();
+        return uniqueId.hashCode();
+    }
+
 //    @Override
 //    protected void onDestroy() {
 //        if (locationManager != null) {
