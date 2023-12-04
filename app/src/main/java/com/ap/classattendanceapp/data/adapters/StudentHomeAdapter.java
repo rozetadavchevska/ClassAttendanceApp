@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
@@ -22,16 +23,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
+import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.format.DateTimeFormatter;
+
 import java.util.List;
 
 public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.ViewHolder> {
     private List<Class> classesList;
     private FragmentManager fragmentManager;
-//    private boolean isUpcoming;
     public StudentHomeAdapter(List<Class> classesList, FragmentManager fragmentManager){
         this.classesList = classesList;
         this.fragmentManager = fragmentManager;
-//        this.isUpcoming = isUpcoming;
     }
     @NonNull
     @Override
@@ -72,25 +74,7 @@ public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.
 
         holder.itemView.setVisibility(View.VISIBLE);
 
-        holder.reviewBtn.setOnClickListener(v -> {//if student has attend button clicked and until class end 45min
-            if (fragmentManager != null) {
-                AddReviewFragment addReviewFragment = new AddReviewFragment();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.studentFrameLayout, addReviewFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
-
-        holder.attendBtn.setOnClickListener(v -> {
-            if (fragmentManager != null) {
-                ConfirmAttendanceFragment confirmAttendanceFragment = new ConfirmAttendanceFragment();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.studentFrameLayout, confirmAttendanceFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
+        isCurrentClass(classItem, holder);
     }
 
     private void fetchCourseName(String courseId, TextView textView) {
@@ -140,6 +124,44 @@ public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.
         });
     }
 
+    public void isCurrentClass(Class classItem, ViewHolder holder){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy, HH:mm");
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        String classDateTimeString = classItem.getDate() + ", " + classItem.getTime();
+        LocalDateTime classDateTime = LocalDateTime.parse(classDateTimeString, formatter);
+        LocalDateTime classEndTime = classDateTime.plusMinutes(45);
+
+        if (currentDateTime.isAfter(classDateTime) && currentDateTime.isBefore(classEndTime)) {
+            holder.reviewBtn.setOnClickListener(v -> {
+                if (fragmentManager != null) {
+                    AddReviewFragment addReviewFragment = new AddReviewFragment();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.studentFrameLayout, addReviewFragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+            });
+
+            holder.attendBtn.setOnClickListener(v -> {
+                if (fragmentManager != null) {
+                    ConfirmAttendanceFragment confirmAttendanceFragment = new ConfirmAttendanceFragment();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.studentFrameLayout, confirmAttendanceFragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+            });
+        } else if (classDateTime.isAfter(currentDateTime)){
+            holder.reviewBtn.setOnClickListener(v -> {
+                Toast.makeText(v.getContext(), "Class hasn't started!", Toast.LENGTH_SHORT).show();
+            });
+
+            holder.attendBtn.setOnClickListener(v -> {
+                Toast.makeText(v.getContext(), "Class hasn't started!", Toast.LENGTH_SHORT).show();
+            });
+        }
+    }
 
     @Override
     public int getItemCount() {
