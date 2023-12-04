@@ -8,9 +8,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ap.classattendanceapp.R;
 import com.ap.classattendanceapp.data.adapters.StudentHomeAdapter;
@@ -32,20 +34,33 @@ import java.util.List;
 
 public class StudentHomeFragment extends Fragment {
     private List<Class> upcomingClassesList;
+    private List<Class> currentClassesList;
     private StudentHomeAdapter upcomingAdapter;
+    private StudentHomeAdapter currentAdapter;
     private FragmentManager fragmentManager;
+    TextView upcomingClassesMessage;
+    TextView currentClassesMessage;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_student_home, container, false);
 
-        RecyclerView upcomingClasses = view.findViewById(R.id.studentHome);
+        RecyclerView upcomingClasses = view.findViewById(R.id.studentUpcomingHome);
+        RecyclerView currentClasses = view.findViewById(R.id.studentCurrentHome);
         fragmentManager = getParentFragmentManager();
 
         upcomingClassesList = new ArrayList<>();
+        currentClassesList = new ArrayList<>();
         upcomingAdapter = new StudentHomeAdapter(upcomingClassesList, fragmentManager);
+        currentAdapter = new StudentHomeAdapter(currentClassesList, fragmentManager);
 
         upcomingClasses.setLayoutManager(new LinearLayoutManager(requireContext()));
         upcomingClasses.setAdapter(upcomingAdapter);
+
+        currentClasses.setLayoutManager(new LinearLayoutManager(requireContext()));
+        currentClasses.setAdapter(currentAdapter);
+
+        upcomingClassesMessage = view.findViewById(R.id.upcomingClassesMessage);
+        currentClassesMessage = view.findViewById(R.id.currentClassesMessage);
 
         getClassesFromDatabase();
 
@@ -82,6 +97,22 @@ public class StudentHomeFragment extends Fragment {
                                         if (classData != null) {
                                             separateClassesByTime(classData);
                                             upcomingAdapter.notifyDataSetChanged();
+                                            currentAdapter.notifyDataSetChanged();
+
+                                            Log.d("DEBUG", "Upcoming Classes Size: " + upcomingClassesList.size());
+                                            Log.d("DEBUG", "Current Classes Size: " + currentClassesList.size());
+
+                                            if (upcomingAdapter.getItemCount() == 0) {
+                                                upcomingClassesMessage.setVisibility(View.VISIBLE);
+                                            } else {
+                                                upcomingClassesMessage.setVisibility(View.GONE);
+                                            }
+
+                                            if (currentAdapter.getItemCount() == 0) {
+                                                currentClassesMessage.setVisibility(View.VISIBLE);
+                                            } else {
+                                                currentClassesMessage.setVisibility(View.GONE);
+                                            }
                                         }
                                     }
                                     @Override
@@ -107,12 +138,22 @@ public class StudentHomeFragment extends Fragment {
 
         String classDateTimeString = classData.getDate() + ", " + classData.getTime();
         LocalDateTime classDateTime = LocalDateTime.parse(classDateTimeString, formatter);
+        LocalDateTime classEndTime = classDateTime.plusMinutes(45);
 
-        if (classDateTime.isAfter(currentDateTime)) {
+        if (currentDateTime.isAfter(classDateTime) && currentDateTime.isBefore(classEndTime)) {
+            currentClassesList.add(classData);
+        } else if (classDateTime.isAfter(currentDateTime)){
             upcomingClassesList.add(classData);
         }
 
+
         Collections.sort(upcomingClassesList, (c1, c2) -> {
+            LocalDateTime time1 = parseDateTime(c1.getDate(), c1.getTime(), formatter);
+            LocalDateTime time2 = parseDateTime(c2.getDate(), c2.getTime(), formatter);
+            return time1.compareTo(time2);
+        });
+
+        Collections.sort(currentClassesList, (c1, c2) -> {
             LocalDateTime time1 = parseDateTime(c1.getDate(), c1.getTime(), formatter);
             LocalDateTime time2 = parseDateTime(c2.getDate(), c2.getTime(), formatter);
             return time1.compareTo(time2);

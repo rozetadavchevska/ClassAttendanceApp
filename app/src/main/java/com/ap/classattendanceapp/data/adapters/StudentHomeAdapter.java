@@ -27,11 +27,11 @@ import java.util.List;
 public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.ViewHolder> {
     private List<Class> classesList;
     private FragmentManager fragmentManager;
-
-
+//    private boolean isUpcoming;
     public StudentHomeAdapter(List<Class> classesList, FragmentManager fragmentManager){
         this.classesList = classesList;
         this.fragmentManager = fragmentManager;
+//        this.isUpcoming = isUpcoming;
     }
     @NonNull
     @Override

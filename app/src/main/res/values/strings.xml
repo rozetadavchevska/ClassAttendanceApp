@@ -51,6 +51,9 @@
 
     <string name="upcomingClasses">Upcoming Classes</string>
     <string name="pastClasses">Past Classes</string>
+    <string name="currentClasses">Current Classes</string>
+    <string name="currentClassesMessage">There are no current classes</string>
+    <string name="upcomingClassesMessage">There are no upcoming classes</string>
 
     <string name="calendarText">Class Schedule</string>
     <string name="addClass">Add Class</string>

@@ -10,17 +10,82 @@
         android:id="@+id/firstHomeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16sp"
+        android:layout_marginTop="16sp"
+        android:layout_marginEnd="16sp"
+        android:layout_marginBottom="16sp"
         android:text="@string/homeText"
         android:textColor="@color/blue"
         android:textSize="24sp"
-        android:layout_margin="16sp"
         android:textStyle="bold" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/studentHome"
+    <LinearLayout
+        android:id="@+id/currentClasses"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_below="@+id/firstHomeText"
-        android:layout_marginBottom="10sp"/>
+        android:layout_marginBottom="10sp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16sp"
+            android:layout_marginBottom="16sp"
+            android:text="@string/currentClasses"
+            android:textColor="@color/blue"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/currentClassesMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16sp"
+            android:layout_marginBottom="16sp"
+            android:text="@string/currentClassesMessage"
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/studentCurrentHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/currentClasses">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16sp"
+            android:layout_marginBottom="16sp"
+            android:text="@string/upcomingClasses"
+            android:textColor="@color/blue"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/upcomingClassesMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16sp"
+            android:layout_marginBottom="16sp"
+            android:text="@string/upcomingClassesMessage"
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/studentUpcomingHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"/>
+
+    </LinearLayout>
+
+
 
 </RelativeLayout>
