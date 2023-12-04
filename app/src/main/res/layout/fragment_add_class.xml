@@ -148,7 +148,8 @@
                 android:backgroundTint="@color/blue"
                 android:padding="10sp"
                 android:text="@string/addClass"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:textStyle="bold"/>
         </LinearLayout>
     </ScrollView>
 

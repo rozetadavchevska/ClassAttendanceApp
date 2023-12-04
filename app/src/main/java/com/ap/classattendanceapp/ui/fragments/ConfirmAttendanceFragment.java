@@ -12,14 +12,13 @@ import android.widget.ImageButton;
 
 import com.ap.classattendanceapp.R;
 
-public class AddReviewFragment extends Fragment {
-
+public class ConfirmAttendanceFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_review, container, false);
+        View view = inflater.inflate(R.layout.fragment_confirm_attendance, container, false);
 
-        ImageButton backBtn = view.findViewById(R.id.leaveReviewBack);
+        ImageButton backBtn = view.findViewById(R.id.attendBack);
         backBtn.setOnClickListener(v -> {
             FragmentManager fragment = getParentFragmentManager();
             fragment.popBackStack();

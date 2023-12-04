@@ -89,7 +89,8 @@
                 android:layout_margin="16sp"
                 android:padding="10sp"
                 android:backgroundTint="@color/blue"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 

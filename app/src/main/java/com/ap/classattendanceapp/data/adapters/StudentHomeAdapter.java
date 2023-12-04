@@ -7,10 +7,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ap.classattendanceapp.R;
 import com.ap.classattendanceapp.data.models.Class;
+import com.ap.classattendanceapp.ui.fragments.AddReviewFragment;
+import com.ap.classattendanceapp.ui.fragments.ConfirmAttendanceFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,9 +26,12 @@ import java.util.List;
 
 public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.ViewHolder> {
     private List<Class> classesList;
+    private FragmentManager fragmentManager;
 
-    public StudentHomeAdapter(List<Class> classesList){
+
+    public StudentHomeAdapter(List<Class> classesList, FragmentManager fragmentManager){
         this.classesList = classesList;
+        this.fragmentManager = fragmentManager;
     }
     @NonNull
     @Override
@@ -65,7 +72,25 @@ public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.
 
         holder.itemView.setVisibility(View.VISIBLE);
 
+        holder.reviewBtn.setOnClickListener(v -> {//if student has attend button clicked and until class end 45min
+            if (fragmentManager != null) {
+                AddReviewFragment addReviewFragment = new AddReviewFragment();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.studentFrameLayout, addReviewFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
 
+        holder.attendBtn.setOnClickListener(v -> {
+            if (fragmentManager != null) {
+                ConfirmAttendanceFragment confirmAttendanceFragment = new ConfirmAttendanceFragment();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.studentFrameLayout, confirmAttendanceFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
     }
 
     private void fetchCourseName(String courseId, TextView textView) {
@@ -139,7 +164,7 @@ public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.
             classDate = itemView.findViewById(R.id.classAttendDate);
             classTime = itemView.findViewById(R.id.classAttendTime);
             attendBtn = itemView.findViewById(R.id.attendBtn);
-            reviewBtn = itemView.findViewById(R.id.attendBtn);
+            reviewBtn = itemView.findViewById(R.id.reviewBtn);
         }
     }
 }

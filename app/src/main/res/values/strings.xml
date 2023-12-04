@@ -45,7 +45,9 @@
     <string name="backBtn">Back</string>
     <string name="allCourses">All Courses</string>
     <string name="course">Course</string>
+    <string name="className">Class</string>
     <string name="enroll">Enroll</string>
+    <string name="confirm">Confirm</string>
 
     <string name="upcomingClasses">Upcoming Classes</string>
     <string name="pastClasses">Past Classes</string>
@@ -72,4 +74,6 @@
     <string name="ok">Okay</string>
     <string name="good">Good</string>
     <string name="great">Great</string>
+
+    <string name="confirmAttendance">Confirm attendance</string>
 </resources>

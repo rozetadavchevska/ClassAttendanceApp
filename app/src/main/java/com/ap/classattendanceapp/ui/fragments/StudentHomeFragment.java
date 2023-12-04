@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,14 +33,16 @@ import java.util.List;
 public class StudentHomeFragment extends Fragment {
     private List<Class> upcomingClassesList;
     private StudentHomeAdapter upcomingAdapter;
+    private FragmentManager fragmentManager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_student_home, container, false);
 
         RecyclerView upcomingClasses = view.findViewById(R.id.studentHome);
+        fragmentManager = getParentFragmentManager();
 
         upcomingClassesList = new ArrayList<>();
-        upcomingAdapter = new StudentHomeAdapter(upcomingClassesList);
+        upcomingAdapter = new StudentHomeAdapter(upcomingClassesList, fragmentManager);
 
         upcomingClasses.setLayoutManager(new LinearLayoutManager(requireContext()));
         upcomingClasses.setAdapter(upcomingAdapter);
