@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,9 +97,6 @@ public class StudentHomeFragment extends Fragment {
                                             separateClassesByTime(classData);
                                             upcomingAdapter.notifyDataSetChanged();
                                             currentAdapter.notifyDataSetChanged();
-
-                                            Log.d("DEBUG", "Upcoming Classes Size: " + upcomingClassesList.size());
-                                            Log.d("DEBUG", "Current Classes Size: " + currentClassesList.size());
 
                                             if (upcomingAdapter.getItemCount() == 0) {
                                                 upcomingClassesMessage.setVisibility(View.VISIBLE);

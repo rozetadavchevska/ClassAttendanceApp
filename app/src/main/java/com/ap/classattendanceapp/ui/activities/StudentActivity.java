@@ -39,8 +39,6 @@ public class StudentActivity extends AppCompatActivity {
     private FirebaseUser currentUser;
     private String currentUserId;
     private List<Class> upcomingClassesList;
-//    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-//    private LocationManager locationManager;
 
     BottomNavigationView bottomNav;
     StudentHomeFragment homeFragment = new StudentHomeFragment();
@@ -62,7 +60,6 @@ public class StudentActivity extends AppCompatActivity {
         currentUserId = currentUser.getUid();
 
         bottomNav = findViewById(R.id.studentBottomNav);
-//        requestLocationPermissions();
 
         getClassesFromDatabase();
 
@@ -88,40 +85,7 @@ public class StudentActivity extends AppCompatActivity {
 
             return false;
         });
-
     }
-
-//    private void requestLocationPermissions() {
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-//                != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(this,
-//                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-//                    LOCATION_PERMISSION_REQUEST_CODE);
-//        } else {
-//            getLocation();
-//        }
-//    }
-//
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                getLocation();
-//            } else {
-//            }
-//        }
-//    }
-//
-//    @SuppressLint("MissingPermission")
-//    private void getLocation() {
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-//                == PackageManager.PERMISSION_GRANTED) {
-//            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//        } else {
-//        }
-//    }
 
     private void getClassesFromDatabase() {
         DatabaseReference courseRef = FirebaseDatabase.getInstance().getReference("users").child(currentUserId).child("coursesId");
@@ -227,12 +191,4 @@ public class StudentActivity extends AppCompatActivity {
         String uniqueId = classModel.getName() + classModel.getDate() + classModel.getTime();
         return uniqueId.hashCode();
     }
-
-//    @Override
-//    protected void onDestroy() {
-//        if (locationManager != null) {
-//            locationManager = null;
-//        }
-//        super.onDestroy();
-//    }
 }
