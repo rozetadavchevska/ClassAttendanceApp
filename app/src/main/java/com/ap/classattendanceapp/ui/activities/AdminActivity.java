@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AdminActivity extends AppCompatActivity {
@@ -88,7 +87,7 @@ public class AdminActivity extends AppCompatActivity {
                    if(task.isSuccessful()){
                        String uid = auth.getCurrentUser().getUid();
                        User addNewUser = new User(uid, emailUser, passwordUser, fName, lName, userType,
-                               new HashMap<>(), new HashMap<>(), new ArrayList<>());
+                               new HashMap<>(), new HashMap<>(), new HashMap<>());
                        usersRef.child(uid).setValue(addNewUser)
                                .addOnSuccessListener(e -> {
                                    Toast.makeText(this,"Successfully added user", Toast.LENGTH_SHORT).show();

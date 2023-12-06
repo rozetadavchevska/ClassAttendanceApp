@@ -64,8 +64,6 @@ public class StudentCoursesFragment extends Fragment {
         FirebaseUser currentUser = auth.getCurrentUser();
         String currentUserId = currentUser.getUid();
 
-
-
         DatabaseReference coursesRef = FirebaseDatabase.getInstance().getReference("courses");
         enrolledCourses = new ArrayList<>();
         coursesRef.addValueEventListener(new ValueEventListener() {
@@ -74,12 +72,10 @@ public class StudentCoursesFragment extends Fragment {
                 coursesList.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Course course = dataSnapshot.getValue(Course.class);
-
                         if(course != null){
                             coursesList.add(course);
                             checkUserEnrolled(coursesList, currentUserId);
                         }
-
                 }
                 adapter.notifyDataSetChanged();
             }

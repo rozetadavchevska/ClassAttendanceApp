@@ -1,6 +1,5 @@
 package com.ap.classattendanceapp.data.models;
 
-import java.util.List;
 import java.util.Map;
 
 public class User {
@@ -12,12 +11,12 @@ public class User {
     private String userType;
     private Map<String, Boolean> coursesId;
     private Map<String, Boolean> classesIds;
-    private List<String> attendedClasses;
+    private Map<String, Boolean>  attendedClasses;
 
     public User(){}
 
     public User(String userId, String userEmail, String userPassword, String firstName, String lastName,
-                String userType, Map<String, Boolean> coursesId, Map<String, Boolean> classesIds, List<String> attendedClasses){
+                String userType, Map<String, Boolean> coursesId, Map<String, Boolean> classesIds, Map<String, Boolean> attendedClasses){
         this.userId = userId;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
@@ -87,11 +86,11 @@ public class User {
 
     public void setCoursesId(Map<String, Boolean> coursesId) {this.coursesId = coursesId;}
 
-    public List<String> getAttendedClasses() {
+    public Map<String, Boolean> getAttendedClasses() {
         return attendedClasses;
     }
 
-    public void setAttendedClasses(List<String> attendedClasses) {
+    public void setAttendedClasses(Map<String, Boolean> attendedClasses) {
         this.attendedClasses = attendedClasses;
     }
 }

@@ -2,20 +2,21 @@ package com.ap.classattendanceapp.data.models;
 
 public class Attendance {
     private String attendanceId;
-    private String teacherId;
-    private String studentId;
-    private String classId;
-    private String courseId;
-    private boolean isPresent;
+    private String teacherName;
+    private String studentName;
+    private String className;
+    private String courseName;
+    private boolean isStudentPresent;
 
     public Attendance(){}
 
-    public Attendance(String attendanceId, String studentId, String classId, String courseId, boolean isPresent){
+    public Attendance(String attendanceId, String teacherName, String studentName, String className, String courseName, boolean isStudentPresent){
         this.attendanceId = attendanceId;
-        this.studentId = studentId;
-        this.classId = classId;
-        this.courseId = courseId;
-        this.isPresent = isPresent;
+        this.teacherName = teacherName;
+        this.studentName = studentName;
+        this.className = className;
+        this.courseName = courseName;
+        this.isStudentPresent = isStudentPresent;
     }
 
     public String getAttendanceId() {
@@ -26,39 +27,43 @@ public class Attendance {
         this.attendanceId = attendanceId;
     }
 
-    public String getTeacherId() { return teacherId; }
-
-    public void setTeacherId(String teacherId) { this.teacherId = teacherId; }
-
-    public String getStudentId() {
-        return studentId;
+    public String getTeacherName() {
+        return teacherName;
     }
 
-    public void setStudentId(String userId) {
-        this.studentId = studentId;
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 
-    public String getClassId() {
-        return classId;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public void setClassId(String classId) {
-        this.classId = classId;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
-    public String getCourseId() {
-        return courseId;
+    public String getClassName() {
+        return className;
     }
 
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
+    public void setClassName(String className) {
+        this.className = className;
     }
 
-    public boolean isPresent() {
-        return isPresent;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setPresent(boolean present) {
-        isPresent = present;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public boolean isStudentPresent() {
+        return isStudentPresent;
+    }
+
+    public void setStudentPresent(boolean studentPresent) {
+        isStudentPresent = studentPresent;
     }
 }

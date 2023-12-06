@@ -31,6 +31,8 @@ import java.util.List;
 public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.ViewHolder> {
     private List<Class> classesList;
     private FragmentManager fragmentManager;
+    String teacherFullName;
+    String courseName;
     public StudentHomeAdapter(List<Class> classesList, FragmentManager fragmentManager){
         this.classesList = classesList;
         this.fragmentManager = fragmentManager;
@@ -83,7 +85,7 @@ public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    String courseName = snapshot.child("name").getValue(String.class);
+                    courseName = snapshot.child("name").getValue(String.class);
                     if (courseName != null) {
                         textView.setText(courseName);
                     } else {
@@ -109,7 +111,7 @@ public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.
                     String teacherFirstName = snapshot.child("userFirstName").getValue(String.class);
                     String teacherLastName = snapshot.child("lastName").getValue(String.class);
                     if (teacherFirstName != null && teacherLastName != null) {
-                        String teacherFullName = teacherFirstName + " " + teacherLastName;
+                        teacherFullName = teacherFirstName + " " + teacherLastName;
                         textView.setText(teacherFullName);
                     } else {
                         textView.setText("Unknown Teacher");
@@ -145,7 +147,7 @@ public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.
 
             holder.attendBtn.setOnClickListener(v -> {
                 if (fragmentManager != null) {
-                    ConfirmAttendanceFragment confirmAttendanceFragment = new ConfirmAttendanceFragment();
+                    ConfirmAttendanceFragment confirmAttendanceFragment = ConfirmAttendanceFragment.newInstance(classItem.getClassId(), classItem.getName(), courseName,teacherFullName);
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.studentFrameLayout, confirmAttendanceFragment);
                     fragmentTransaction.addToBackStack(null);
