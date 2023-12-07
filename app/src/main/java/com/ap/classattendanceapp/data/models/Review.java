@@ -1,25 +1,36 @@
 package com.ap.classattendanceapp.data.models;
 
 public class Review {
+    private String reviewId;
     private String timePace;
     private String orgPresentation;
     private String importance;
     private String comment;
-    private String studentId;
-    private String teacherId;
-    private String courseId;
+    private String classId;
+    private String className;
+    private String teacherName;
+    private String courseName;
 
 
-    public Review(String timePace, String orgPresentation, String importance, String comment, String studentId, String teacherId, String courseId) {
+    public Review(String reviewId, String timePace, String orgPresentation, String importance, String comment, String classId, String className, String teacherName, String courseName) {
+        this.reviewId = reviewId;
         this.timePace = timePace;
         this.orgPresentation = orgPresentation;
         this.importance = importance;
         this.comment = comment;
-        this.studentId = studentId;
-        this.teacherId = teacherId;
-        this.courseId = courseId;
+        this.classId = classId;
+        this.className = className;
+        this.teacherName = teacherName;
+        this.courseName = courseName;
     }
 
+    public String getReviewId() {
+        return reviewId;
+    }
+
+    public void setReviewId(String reviewId) {
+        this.reviewId = reviewId;
+    }
 
     public String getTimePace() {
         return timePace;
@@ -53,27 +64,35 @@ public class Review {
         this.comment = comment;
     }
 
-    public String getStudentId() {
-        return studentId;
+    public String getClassId() {
+        return classId;
     }
 
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
+    public void setClassId(String classId) {
+        this.classId = classId;
     }
 
-    public String getTeacherId() {
-        return teacherId;
+    public String getClassName() {
+        return className;
     }
 
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
+    public void setClassName(String className) {
+        this.className = className;
     }
 
-    public String getCourseId() {
-        return courseId;
+    public String getTeacherName() {
+        return teacherName;
     }
 
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 }

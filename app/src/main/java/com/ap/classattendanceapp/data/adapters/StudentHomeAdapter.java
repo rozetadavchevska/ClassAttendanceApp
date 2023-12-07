@@ -137,7 +137,7 @@ public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.
         if (currentDateTime.isAfter(classDateTime) && currentDateTime.isBefore(classEndTime)) {
             holder.reviewBtn.setOnClickListener(v -> {
                 if (fragmentManager != null) {
-                    AddReviewFragment addReviewFragment = new AddReviewFragment();
+                    AddReviewFragment addReviewFragment = AddReviewFragment.newInstance(classItem.getClassId(), classItem.getName(), courseName,classItem.getTeacherId(), teacherFullName);
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.studentFrameLayout, addReviewFragment);
                     fragmentTransaction.addToBackStack(null);
