@@ -48,6 +48,7 @@
     <string name="className">Class</string>
     <string name="enroll">Enroll</string>
     <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
 
     <string name="upcomingClasses">Upcoming Classes</string>
     <string name="pastClasses">Past Classes</string>
@@ -83,4 +84,7 @@
     <string name="confirmAttendance">Confirm attendance</string>
     <string name="confirmStudents">Students</string>
     <string name="viewReviews">Reviews</string>
+
+    <string name="studentsAttendingClass">Students attending</string>
+
 </resources>

@@ -147,7 +147,7 @@ public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.
 
             holder.attendBtn.setOnClickListener(v -> {
                 if (fragmentManager != null) {
-                    ConfirmAttendanceFragment confirmAttendanceFragment = ConfirmAttendanceFragment.newInstance(classItem.getClassId(), classItem.getName(), courseName,teacherFullName);
+                    ConfirmAttendanceFragment confirmAttendanceFragment = ConfirmAttendanceFragment.newInstance(classItem.getClassId(), classItem.getName(), courseName, classItem.getTeacherId(), teacherFullName);
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.studentFrameLayout, confirmAttendanceFragment);
                     fragmentTransaction.addToBackStack(null);

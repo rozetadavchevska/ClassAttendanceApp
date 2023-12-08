@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/white"
+    app:contentPadding="10sp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="5dp"
+    android:layout_margin="5sp"
+    android:layout_marginTop="5sp"
+    android:layout_marginBottom="5sp"
+    android:id="@+id/teacherClassCard"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/studentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:textColor="@color/blue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_margin="5sp"
+        android:layout_gravity="center_vertical"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="end">
+
+        <ImageButton
+            android:id="@+id/confirmBtn"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:src="@drawable/ic_confirm"
+            android:backgroundTint="@color/green"
+            android:layout_margin="5sp"
+            android:contentDescription="@string/confirm" />
+
+        <ImageButton
+            android:id="@+id/cancelBtn"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:src="@drawable/ic_cancel"
+            android:backgroundTint="@color/red"
+            android:layout_margin="5sp"
+            android:contentDescription="@string/cancel"/>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

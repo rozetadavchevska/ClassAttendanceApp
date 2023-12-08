@@ -3,12 +3,17 @@ package com.ap.classattendanceapp.ui.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.ap.classattendanceapp.R;
+import com.ap.classattendanceapp.data.adapters.StudentsAttendingAdapter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,8 +25,8 @@ public class ConfirmStudentAttendedFragment extends Fragment {
     String className;
     String courseName;
     Map<String, Boolean> studentsIds;
-    String studentId;
-    Boolean isPresent;
+    private List<String> studentsList;
+    private StudentsAttendingAdapter adapter;
 
     public static ConfirmStudentAttendedFragment newInstance(String currentClassId, String currentClassName, String currentCourseName, Map<String, Boolean> studentId) {
         ConfirmStudentAttendedFragment fragment = new ConfirmStudentAttendedFragment();
@@ -38,6 +43,12 @@ public class ConfirmStudentAttendedFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_confirm_student_attended, container, false);
 
+        ImageButton backBtn = view.findViewById(R.id.attendingBack);
+        backBtn.setOnClickListener(v -> {
+            FragmentManager fragment = getParentFragmentManager();
+            fragment.popBackStack();
+        });
+
         Bundle args = getArguments();
         if (args != null) {
             classId = args.getString("classId");
@@ -46,16 +57,18 @@ public class ConfirmStudentAttendedFragment extends Fragment {
             Serializable mapStudents = args.getSerializable("studentsId");
             if (mapStudents instanceof Map) {
                 studentsIds = (Map<String, Boolean>) mapStudents;
-
-                List<String> studentIdsList = new ArrayList<>();
-                List<Boolean> attendanceList = new ArrayList<>();
+                studentsList = new ArrayList<>();
 
                 for (Map.Entry<String, Boolean> entry : studentsIds.entrySet()) {
-                    studentIdsList.add(entry.getKey());
-                    attendanceList.add(entry.getValue());
+                    studentsList.add(entry.getKey());
                 }
             }
         }
+
+        RecyclerView studentsAttending = view.findViewById(R.id.studentAttending);
+        adapter = new StudentsAttendingAdapter(studentsList, classId);
+        studentsAttending.setLayoutManager(new LinearLayoutManager(requireContext()));
+        studentsAttending.setAdapter(adapter);
 
         return view;
     }

@@ -42,17 +42,19 @@ public class ConfirmAttendanceFragment extends Fragment {
     TextView teacherName;
     String classNameText;
     String courseNameText;
+    String teacherId;
     String teacherNameText;
     String currentUserId;
     String studentName;
     String classId;
 
-    public static ConfirmAttendanceFragment newInstance(String currentClassId, String className, String coursesName, String teachersName){
+    public static ConfirmAttendanceFragment newInstance(String currentClassId, String className, String coursesName, String teachersId, String teachersName){
         ConfirmAttendanceFragment fragment = new ConfirmAttendanceFragment();
         Bundle args = new Bundle();
         args.putString("classId", currentClassId);
         args.putString("className", className);
         args.putString("courseName", coursesName);
+        args.putString("teacherId", teachersId);
         args.putString("teacherName", teachersName);
         fragment.setArguments(args);
         return fragment;
@@ -77,10 +79,11 @@ public class ConfirmAttendanceFragment extends Fragment {
 
         Bundle args = getArguments();
         if (args != null) {
-            classId = args.getString("classId", "Class Id");
-            classNameText = args.getString("className", "Unknown Course");
-            courseNameText = args.getString("courseName", "Unknown Course");
-            teacherNameText = args.getString("teacherName", "Unknown Teacher");
+            classId = args.getString("classId");
+            classNameText = args.getString("className");
+            courseNameText = args.getString("courseName");
+            teacherId = args.getString("teacherId");
+            teacherNameText = args.getString("teacherName");
 
             if (classNameText != null) {
                 updateInformation(classNameText, courseNameText, teacherNameText);
@@ -186,7 +189,7 @@ public class ConfirmAttendanceFragment extends Fragment {
         DatabaseReference attendanceRef = FirebaseDatabase.getInstance().getReference("attendance");
         String attendanceId = attendanceRef.push().getKey();
 
-        Attendance attendance = new Attendance(attendanceId, teacherNameText,studentName,classNameText,courseNameText, true);
+        Attendance attendance = new Attendance(attendanceId,teacherId,teacherNameText,currentUserId,studentName,classId,classNameText,courseNameText, true);
         if(attendanceId != null){
             attendanceRef.child(attendanceId).setValue(attendance)
                     .addOnSuccessListener(v -> {
