@@ -65,15 +65,34 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/viewStudentsBtn"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/confirmStudents"
-        android:backgroundTint="@color/orange"
-        android:textColor="@color/white"
-        android:layout_gravity="end"
-        android:textStyle="bold"
-        android:layout_marginBottom="5sp"/>
+        android:orientation="vertical"
+        android:layout_gravity="end">
+
+        <Button
+            android:id="@+id/viewStudentsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirmStudents"
+            android:backgroundTint="@color/orange"
+            android:textColor="@color/white"
+            android:layout_gravity="end"
+            android:textStyle="bold"
+            android:layout_marginBottom="5sp"/>
+
+        <Button
+            android:id="@+id/viewReviewsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/viewReviews"
+            android:backgroundTint="@color/blue"
+            android:textColor="@color/white"
+            android:layout_gravity="end"
+            android:textStyle="bold"
+            android:layout_marginTop="5sp" />
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

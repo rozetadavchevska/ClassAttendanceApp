@@ -68,7 +68,6 @@
     <string name="dateTime">Date and Time:</string>
 
     <string name="classAttendance">Class Attendance</string>
-    <string name="searchAttendance">Search student, class, course, etc.</string>
     <string name="attend">Attend</string>
     <string name="review">Review</string>
     <string name="leaveReview">Leave a review</string>
@@ -86,5 +85,6 @@
     <string name="viewReviews">Reviews</string>
 
     <string name="studentsAttendingClass">Students attending</string>
+    <string name="studentsAttendedClass">Students attended</string>
 
 </resources>
