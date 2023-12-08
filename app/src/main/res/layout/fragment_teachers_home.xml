@@ -17,21 +17,17 @@
         android:textStyle="bold"/>
 
     <LinearLayout
+        android:id="@+id/dashboardShortcuts"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_below="@+id/dashboard">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/dashboard"
+        android:gravity="center">
 
             <Button
                 android:id="@+id/dashAddCourse"
-                android:layout_width="120sp"
-                android:layout_height="120sp"
+                android:layout_width="150sp"
+                android:layout_height="150sp"
                 android:layout_margin="10sp"
                 android:text="@string/addCourse"
                 android:textColor="@color/orange"
@@ -47,8 +43,8 @@
 
             <Button
                 android:id="@+id/dashAddClass"
-                android:layout_width="120sp"
-                android:layout_height="120sp"
+                android:layout_width="150sp"
+                android:layout_height="150sp"
                 android:layout_margin="10sp"
                 android:text="@string/addClass"
                 android:textColor="@color/orange"
@@ -61,76 +57,37 @@
                 app:iconTint="@color/orange"
                 android:padding="10sp"
                 android:backgroundTint="@color/offWhite" />
+    </LinearLayout>
 
-        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/dashboardShortcuts">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/teacherCurrentClass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:text="@string/currentClass"
+            android:textColor="@color/blue"
+            android:textSize="18sp"
+            android:layout_margin="16sp"/>
 
-            <Button
-                android:id="@+id/dashAddSurvey"
-                android:layout_width="120sp"
-                android:layout_height="120sp"
-                android:layout_margin="10sp"
-                android:text="@string/survey"
-                android:textColor="@color/orange"
-                android:textStyle="bold"
-                app:cornerRadius="20sp"
-                app:icon="@drawable/ic_survey"
-                app:iconGravity="textTop"
-                app:iconPadding="10dp"
-                app:iconSize="40dp"
-                app:iconTint="@color/orange"
-                android:padding="10sp"
-                android:backgroundTint="@color/offWhite" />
-
-            <Button
-                android:id="@+id/dashCheckReviews"
-                android:layout_width="120sp"
-                android:layout_height="120sp"
-                android:layout_margin="10sp"
-                android:text="@string/reviews"
-                android:textColor="@color/orange"
-                android:textStyle="bold"
-                app:cornerRadius="20sp"
-                app:icon="@drawable/ic_reviews"
-                app:iconGravity="textTop"
-                app:iconPadding="10dp"
-                app:iconSize="40dp"
-                app:iconTint="@color/orange"
-                android:padding="10sp"
-                android:backgroundTint="@color/offWhite" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/currentClassMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_marginStart="16sp"
+            android:layout_marginBottom="16sp"
+            android:text="@string/currentClassesMessage"
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
 
-            <Button
-                android:id="@+id/dashAnalysis"
-                android:layout_width="120sp"
-                android:layout_height="120sp"
-                android:layout_margin="10sp"
-                android:text="@string/analysis"
-                android:textColor="@color/orange"
-                android:textStyle="bold"
-                app:cornerRadius="20sp"
-                app:icon="@drawable/ic_analysis"
-                app:iconGravity="textTop"
-                app:iconPadding="10dp"
-                app:iconSize="40dp"
-                app:iconTint="@color/orange"
-                android:padding="10sp"
-                android:backgroundTint="@color/offWhite" />
-
-        </LinearLayout>
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/currentClassTeacher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </RelativeLayout>

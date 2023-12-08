@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/white"
+    app:contentPadding="10sp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="5dp"
+    android:layout_margin="5sp"
+    android:layout_marginTop="5sp"
+    android:layout_marginBottom="5sp"
+    android:id="@+id/teacherClassCard"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="250sp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="start">
+
+        <TextView
+            android:id="@+id/className"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_margin="5sp"/>
+
+        <TextView
+            android:id="@+id/classCourse"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:text="@string/course"
+            android:textColor="@color/blue"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_margin="5sp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/classDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/emptyTeacher"
+                android:textColor="@color/orange"
+                android:textSize="14sp"
+                android:layout_margin="5sp"/>
+
+            <TextView
+                android:id="@+id/classTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/emptyTeacher"
+                android:textColor="@color/orange"
+                android:textSize="14sp"
+                android:layout_margin="5sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="end">
+
+        <Button
+            android:id="@+id/viewStudentsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirmStudents"
+            android:backgroundTint="@color/orange"
+            android:textColor="@color/white"
+            android:layout_gravity="end"
+            android:textStyle="bold"
+            android:layout_marginBottom="5sp"/>
+
+        <Button
+            android:id="@+id/viewReviewsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/viewReviews"
+            android:backgroundTint="@color/blue"
+            android:textColor="@color/white"
+            android:layout_gravity="end"
+            android:textStyle="bold"
+            android:layout_marginTop="5sp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

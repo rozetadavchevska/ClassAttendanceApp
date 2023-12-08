@@ -52,7 +52,9 @@
     <string name="upcomingClasses">Upcoming Classes</string>
     <string name="pastClasses">Past Classes</string>
     <string name="currentClasses">Current Classes</string>
+    <string name="currentClass">Current Class</string>
     <string name="currentClassesMessage">There are no current classes</string>
+    <string name="currentClassMessage">There is no current class</string>
     <string name="upcomingClassesMessage">There are no upcoming classes</string>
 
     <string name="calendarText">Class Schedule</string>
@@ -79,4 +81,6 @@
     <string name="great">Great</string>
 
     <string name="confirmAttendance">Confirm attendance</string>
+    <string name="confirmStudents">Students</string>
+    <string name="viewReviews">Reviews</string>
 </resources>
