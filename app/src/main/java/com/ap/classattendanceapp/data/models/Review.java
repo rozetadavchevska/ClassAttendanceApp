@@ -8,11 +8,12 @@ public class Review {
     private String comment;
     private String classId;
     private String className;
+    private String teacherId;
     private String teacherName;
     private String courseName;
 
 
-    public Review(String reviewId, String timePace, String orgPresentation, String importance, String comment, String classId, String className, String teacherName, String courseName) {
+    public Review(String reviewId, String timePace, String orgPresentation, String importance, String comment, String classId, String className, String teacherId, String teacherName, String courseName) {
         this.reviewId = reviewId;
         this.timePace = timePace;
         this.orgPresentation = orgPresentation;
@@ -20,9 +21,12 @@ public class Review {
         this.comment = comment;
         this.classId = classId;
         this.className = className;
+        this.teacherId = teacherId;
         this.teacherName = teacherName;
         this.courseName = courseName;
     }
+
+    public Review(){}
 
     public String getReviewId() {
         return reviewId;
@@ -78,6 +82,14 @@ public class Review {
 
     public void setClassName(String className) {
         this.className = className;
+    }
+
+    public String getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
     }
 
     public String getTeacherName() {

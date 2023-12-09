@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/white"
+    app:contentPadding="10sp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="5dp"
+    android:layout_margin="5sp"
+    android:id="@+id/reviewCard">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/timePace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/timeReview"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
+                android:layout_marginEnd="10sp"/>
+
+            <TextView
+                android:id="@+id/timePaceAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/orange"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/presentation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/presentationReview"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
+                android:layout_marginEnd="10sp"/>
+
+            <TextView
+                android:id="@+id/presentationAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/orange"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/importance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/importanceReview"
+            android:textColor="@color/blue"
+            android:textSize="16sp"
+            android:layout_marginEnd="10sp"/>
+
+        <TextView
+            android:id="@+id/importanceAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/orange"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/leaveComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/leaveComment"
+            android:textColor="@color/blue"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/leaveCommentAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/orange"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

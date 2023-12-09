@@ -72,12 +72,12 @@ public class ClassAttendanceAdapter extends RecyclerView.Adapter<ClassAttendance
                 fragmentTransaction.replace(R.id.teacherFrameLayout, viewStudentsAttendedFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
-            }
+            } //else to not crash app
         });
 
         holder.viewReviewsBtn.setOnClickListener(v -> {
             if (fragmentManager != null) {
-                ViewReviewsFragment viewReviewsFragment = ViewReviewsFragment.newInstance(classItem.getClassId(), classItem.getName(), currentCourseName);
+                ViewReviewsFragment viewReviewsFragment = ViewReviewsFragment.newInstance(classItem.getClassId());
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.teacherFrameLayout, viewReviewsFragment);
                 fragmentTransaction.addToBackStack(null);

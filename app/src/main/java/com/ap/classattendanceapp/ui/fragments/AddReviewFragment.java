@@ -136,7 +136,7 @@ public class AddReviewFragment extends Fragment {
         DatabaseReference reviewsRef = FirebaseDatabase.getInstance().getReference("reviews");
         String reviewId = reviewsRef.push().getKey();
 
-        Review review = new Review(reviewId, selectedTime, selectedOrganization, selectedImportance, comment, classId, classNameText, teacherNameText, courseNameText);
+        Review review = new Review(reviewId, selectedTime, selectedOrganization, selectedImportance, comment, classId, classNameText, teacherId, teacherNameText, courseNameText);
         if(reviewId != null) {
             reviewsRef.child(reviewId).setValue(review)
                     .addOnSuccessListener(v -> {
