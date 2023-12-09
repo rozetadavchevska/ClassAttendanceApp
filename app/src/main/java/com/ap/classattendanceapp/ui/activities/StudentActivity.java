@@ -44,7 +44,6 @@ public class StudentActivity extends AppCompatActivity {
     StudentHomeFragment homeFragment = new StudentHomeFragment();
     StudentCoursesFragment coursesFragment = new StudentCoursesFragment();
     StudentClassesFragment classesFragment = new StudentClassesFragment();
-    //    CalendarFragment calendarFragment = new CalendarFragment();
     ProfileFragment profileFragment = new ProfileFragment();
 
     @Override
@@ -75,9 +74,6 @@ public class StudentActivity extends AppCompatActivity {
             } else if (itemId == R.id.classes) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.studentFrameLayout, classesFragment).commit();
                 return true;
-//            } else if(itemId == R.id.calendar){
-//                getSupportFragmentManager().beginTransaction().replace(R.id.studentFrameLayout, calendarFragment).commit();
-//                return true;
             } else if (itemId == R.id.profile) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.studentFrameLayout, profileFragment).commit();
                 return true;

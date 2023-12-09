@@ -56,13 +56,11 @@ public class AddNewCourseFragment extends Fragment {
     }
 
     private void getTeachers(){
-
         DatabaseReference dataRef = FirebaseDatabase.getInstance().getReference().child("users");
         dataRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 teachersList = new ArrayList<>();
-
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     String userType = dataSnapshot.child("userType").getValue(String.class);
                     if("Teacher".equals(userType)){
@@ -75,11 +73,8 @@ public class AddNewCourseFragment extends Fragment {
                     courseSpinner.setAdapter(adapter);
                 }
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
     }
 
@@ -100,14 +95,12 @@ public class AddNewCourseFragment extends Fragment {
             DataSnapshot selectedTeacherSnapshot = teachersList.get(courseSpinner.getSelectedItemPosition());
             String teacherId = selectedTeacherSnapshot.getKey();
 
-
             Course newCourse = new Course(courseId, courseName, courseDescription, new HashMap<>(), new HashMap<>(), new HashMap<>());
             dataRef.child(courseId).setValue(newCourse)
                     .addOnSuccessListener(v -> {
                         enrollTeacherToCourse(teacherId, courseId);
                         addTeacherToCourse(teacherId, courseId);
                         Toast.makeText(getActivity(), "Successfully added course", Toast.LENGTH_SHORT).show();
-
                         clearInputFields();
                     })
                     .addOnFailureListener(v -> Toast.makeText(getActivity(), "Error: " + v.getMessage(), Toast.LENGTH_SHORT).show());

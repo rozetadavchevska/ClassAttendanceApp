@@ -129,7 +129,7 @@ public class ConfirmAttendanceFragment extends Fragment {
                         if (location != null) {
                             onLocationReceived(location.getLatitude(), location.getLongitude());
                         } else {
-                            Toast.makeText(requireContext(), "Location is null", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireContext(), "Turn on Location", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(e -> {
@@ -142,11 +142,10 @@ public class ConfirmAttendanceFragment extends Fragment {
 
     private void onLocationReceived(double userLatitude, double userLongitude) {
         double distance = calculateDistance(userLatitude, userLongitude, universityLatitude, universityLongitude);
-
         if (distance <= maxDistanceMeters) {
             confirmAttendance.setOnClickListener(v -> attendanceConfirmation());
         } else {
-            Toast.makeText(requireContext(), "You are not at the university.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), "You are not at the university", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -168,7 +167,6 @@ public class ConfirmAttendanceFragment extends Fragment {
         currentUserId = currentUser.getUid();
 
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(currentUserId);
-
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -197,7 +195,7 @@ public class ConfirmAttendanceFragment extends Fragment {
                         updateClassWithStudentsAttended(currentUserId, classId);
                         Toast.makeText(getActivity(), "Attendance confirmed", Toast.LENGTH_SHORT).show();
                         confirmAttendance.setText("Confirmed");
-                        disableConfirmButton();
+                        confirmAttendance.setEnabled(false);
                     })
                     .addOnFailureListener(e -> Toast.makeText(getActivity(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
         } else {
@@ -213,9 +211,5 @@ public class ConfirmAttendanceFragment extends Fragment {
     private void updateClassWithStudentsAttended(String studentId, String attendedClassId){
         DatabaseReference studentRef = FirebaseDatabase.getInstance().getReference("classes");
         studentRef.child(attendedClassId).child("studentIds").child(studentId).setValue(true);
-    }
-
-    private void disableConfirmButton() {
-        confirmAttendance.setEnabled(false);
     }
 }

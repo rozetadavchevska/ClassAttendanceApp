@@ -142,6 +142,8 @@ public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.
                     fragmentTransaction.replace(R.id.studentFrameLayout, addReviewFragment);
                     fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
+                } else {
+                    Toast.makeText(v.getContext(), "Try again later", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -152,6 +154,8 @@ public class StudentHomeAdapter extends RecyclerView.Adapter<StudentHomeAdapter.
                     fragmentTransaction.replace(R.id.studentFrameLayout, confirmAttendanceFragment);
                     fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
+                } else {
+                    Toast.makeText(v.getContext(), "Try again later", Toast.LENGTH_SHORT).show();
                 }
             });
         } else if (classDateTime.isAfter(currentDateTime)){

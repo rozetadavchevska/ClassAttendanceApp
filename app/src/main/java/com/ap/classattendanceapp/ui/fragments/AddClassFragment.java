@@ -61,9 +61,7 @@ public class AddClassFragment extends Fragment {
         currentTeacher();
         getCourses();
 
-
         Button addNewClass = view.findViewById(R.id.addClassBtn);
-
         addNewClass.setOnClickListener(v -> addClass());
 
         return view;
@@ -90,9 +88,7 @@ public class AddClassFragment extends Fragment {
                 }
             }
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
     }
 
@@ -120,11 +116,8 @@ public class AddClassFragment extends Fragment {
                     getCourses();
                 }
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle error
-            }
+            public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
     }
 

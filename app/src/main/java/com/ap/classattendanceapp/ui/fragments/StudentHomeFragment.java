@@ -70,8 +70,8 @@ public class StudentHomeFragment extends Fragment {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
         String currentUserId = currentUser.getUid();
-        DatabaseReference courseRef = FirebaseDatabase.getInstance().getReference("users").child(currentUserId).child("coursesId");
 
+        DatabaseReference courseRef = FirebaseDatabase.getInstance().getReference("users").child(currentUserId).child("coursesId");
         courseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -115,14 +115,12 @@ public class StudentHomeFragment extends Fragment {
                                     public void onCancelled(@NonNull DatabaseError error) {}
                                 });
                             }
-
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {}
                     });
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
@@ -142,7 +140,6 @@ public class StudentHomeFragment extends Fragment {
             upcomingClassesList.add(classData);
         }
 
-
         Collections.sort(upcomingClassesList, (c1, c2) -> {
             LocalDateTime time1 = parseDateTime(c1.getDate(), c1.getTime(), formatter);
             LocalDateTime time2 = parseDateTime(c2.getDate(), c2.getTime(), formatter);
@@ -154,7 +151,6 @@ public class StudentHomeFragment extends Fragment {
             LocalDateTime time2 = parseDateTime(c2.getDate(), c2.getTime(), formatter);
             return time1.compareTo(time2);
         });
-
     }
 
     private LocalDateTime parseDateTime(String date, String time, DateTimeFormatter formatter) {

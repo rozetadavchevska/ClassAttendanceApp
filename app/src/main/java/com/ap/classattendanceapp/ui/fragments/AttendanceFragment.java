@@ -55,6 +55,7 @@ public class AttendanceFragment extends Fragment {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
         String currentUserId = currentUser.getUid();
+
         DatabaseReference courseRef = FirebaseDatabase.getInstance().getReference("users").child(currentUserId).child("coursesId");
         courseRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -92,7 +93,6 @@ public class AttendanceFragment extends Fragment {
                     });
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });

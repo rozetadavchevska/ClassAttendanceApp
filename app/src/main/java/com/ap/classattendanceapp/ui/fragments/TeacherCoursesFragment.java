@@ -40,7 +40,6 @@ public class TeacherCoursesFragment extends Fragment {
         ImageButton addCourse = view.findViewById(R.id.buttonAddCourse);
         ImageButton viewCourses = view.findViewById(R.id.buttonViewCourses);
 
-
         addCourse.setOnClickListener(v -> {
             AddNewCourseFragment addNewCourseFragment = new AddNewCourseFragment();
             FragmentManager fragmentManager = getParentFragmentManager();
@@ -98,7 +97,6 @@ public class TeacherCoursesFragment extends Fragment {
 
     private void checkUserEnrolled(List<Course> fullCoursesList, String userId){
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId).child("coursesId");
-
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -43,7 +43,6 @@ public class TeacherClassesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_teacher_classes, container, false);
 
         ImageButton addClass = view.findViewById(R.id.addNewClass);
-
         addClass.setOnClickListener(v -> {
             AddClassFragment addClassFragment = new AddClassFragment();
             FragmentManager fragment = getParentFragmentManager();
@@ -86,22 +85,17 @@ public class TeacherClassesFragment extends Fragment {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Class classData = dataSnapshot.getValue(Class.class);
                     if (classData != null) {
-                        // Check if the class belongs to the current teacher's course
                         if (isTeacherEnrolledInCourse(classData)) {
                             classesList.add(classData);
                             separateClassesByTime(classData);
                         }
                     }
                 }
-
                 upcomingAdapter.notifyDataSetChanged();
                 pastAdapter.notifyDataSetChanged();
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Handle error if needed
-            }
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
     }
 
@@ -127,14 +121,12 @@ public class TeacherClassesFragment extends Fragment {
             upcomingClassesList.add(classData);
         }
 
-        // Sort upcoming classes by time
         Collections.sort(upcomingClassesList, (c1, c2) -> {
             LocalDateTime time1 = parseDateTime(c1.getDate(), c1.getTime(), formatter);
             LocalDateTime time2 = parseDateTime(c2.getDate(), c2.getTime(), formatter);
             return time1.compareTo(time2);
         });
 
-        // Sort past classes in descending order (from closest to farthest)
         Collections.sort(pastClassesList, (c1, c2) -> {
             LocalDateTime time1 = parseDateTime(c1.getDate(), c1.getTime(), formatter);
             LocalDateTime time2 = parseDateTime(c2.getDate(), c2.getTime(), formatter);

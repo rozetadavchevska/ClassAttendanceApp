@@ -23,9 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
 public class MainActivity extends AppCompatActivity {
-
     private static final int SPLASH_DELAY = 2000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,16 +34,16 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
 
-            new Handler().postDelayed(() -> {
-                if(user == null){
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    String uid = user.getUid();
-                    switchViews(uid);
-                }
-            }, SPLASH_DELAY);
+        new Handler().postDelayed(() -> {
+            if(user == null){
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                String uid = user.getUid();
+                switchViews(uid);
+            }
+        }, SPLASH_DELAY);
     }
 
     private void switchViews(String userId){
@@ -55,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     String userType = snapshot.child("userType").getValue(String.class);
-
                     switch (userType) {
                         case "Student":
                             startActivity(new Intent(MainActivity.this, StudentActivity.class));
@@ -72,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "User type not found", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(MainActivity.this, "Error accessing view", Toast.LENGTH_SHORT).show();

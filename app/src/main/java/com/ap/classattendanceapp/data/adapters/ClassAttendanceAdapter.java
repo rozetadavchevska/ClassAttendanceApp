@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
@@ -72,7 +73,9 @@ public class ClassAttendanceAdapter extends RecyclerView.Adapter<ClassAttendance
                 fragmentTransaction.replace(R.id.teacherFrameLayout, viewStudentsAttendedFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
-            } //else to not crash app
+            } else {
+                Toast.makeText(v.getContext(), "No students at the moment", Toast.LENGTH_SHORT).show();
+            }
         });
 
         holder.viewReviewsBtn.setOnClickListener(v -> {
@@ -82,6 +85,8 @@ public class ClassAttendanceAdapter extends RecyclerView.Adapter<ClassAttendance
                 fragmentTransaction.replace(R.id.teacherFrameLayout, viewReviewsFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
+            } else {
+                Toast.makeText(v.getContext(), "No reviews at the moment", Toast.LENGTH_SHORT).show();
             }
         });
     }

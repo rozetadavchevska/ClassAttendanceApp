@@ -30,7 +30,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class StudentClassesFragment extends Fragment {
-    private List<Class> classesList;
     private List<Class> upcomingClassesList;
     private List<Class> pastClassesList;
     private StudentClassesAdapter upcomingAdapter;
@@ -42,7 +41,6 @@ public class StudentClassesFragment extends Fragment {
         RecyclerView upcomingClasses = view.findViewById(R.id.upcomingClassesView);
         RecyclerView pastClasses = view.findViewById(R.id.pastClassesView);
 
-        classesList = new ArrayList<>();
         upcomingClassesList = new ArrayList<>();
         pastClassesList = new ArrayList<>();
 
@@ -97,14 +95,12 @@ public class StudentClassesFragment extends Fragment {
                                     public void onCancelled(@NonNull DatabaseError error) {}
                                 });
                             }
-
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {}
                     });
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });

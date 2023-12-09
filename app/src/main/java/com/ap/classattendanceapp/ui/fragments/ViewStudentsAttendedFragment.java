@@ -24,7 +24,6 @@ public class ViewStudentsAttendedFragment extends Fragment {
     Map<String, Boolean> studentsIds;
     private List<String> studentsList;
     private StudentNameAdapter adapter;
-
     public static ViewStudentsAttendedFragment newInstance(Map<String, Boolean> studentId) {
         ViewStudentsAttendedFragment fragment = new ViewStudentsAttendedFragment();
         Bundle args = new Bundle();

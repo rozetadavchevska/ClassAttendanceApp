@@ -41,7 +41,6 @@ public class ViewCoursesFragment extends Fragment {
         });
 
         RecyclerView recyclerView = view.findViewById(R.id.coursesListView);
-
         coursesList = new ArrayList<>();
         adapter = new CoursesAdapter(coursesList);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -57,7 +56,6 @@ public class ViewCoursesFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 coursesList.clear();
-
                 for (DataSnapshot courseSnapshot : snapshot.getChildren()) {
                     Course course = courseSnapshot.getValue(Course.class);
                     if (course != null) {

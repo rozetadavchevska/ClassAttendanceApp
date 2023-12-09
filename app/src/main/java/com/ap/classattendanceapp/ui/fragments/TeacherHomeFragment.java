@@ -34,7 +34,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class TeacherHomeFragment extends Fragment {
-
     private List<Class> currentClassesList;
     private FragmentManager fragmentManager;
     private TeacherHomeAdapter adapter;
@@ -85,8 +84,8 @@ public class TeacherHomeFragment extends Fragment {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
         String currentUserId = currentUser.getUid();
-        DatabaseReference courseRef = FirebaseDatabase.getInstance().getReference("users").child(currentUserId).child("coursesId");
 
+        DatabaseReference courseRef = FirebaseDatabase.getInstance().getReference("users").child(currentUserId).child("coursesId");
         courseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -129,7 +128,6 @@ public class TeacherHomeFragment extends Fragment {
                     });
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });

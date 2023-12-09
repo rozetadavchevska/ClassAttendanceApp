@@ -143,7 +143,7 @@ public class AddReviewFragment extends Fragment {
                         updateTeacherWithReview(reviewId, teacherId);
                         Toast.makeText(getActivity(), "Review sent", Toast.LENGTH_SHORT).show();
                         leaveReview.setText("Review sent");
-                        disableReviewButton();
+                        leaveReview.setEnabled(false);
                     })
                     .addOnFailureListener(v -> Toast.makeText(getActivity(), "Review not sent", Toast.LENGTH_SHORT).show());
         }
@@ -152,9 +152,5 @@ public class AddReviewFragment extends Fragment {
     private void updateTeacherWithReview(String reviewId, String teacherClassId) {
         DatabaseReference teacherRef = FirebaseDatabase.getInstance().getReference("users");
         teacherRef.child(teacherClassId).child("reviewIds").child(reviewId).setValue(true);
-    }
-
-    private void disableReviewButton() {
-        leaveReview.setEnabled(false);
     }
 }

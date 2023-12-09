@@ -55,7 +55,6 @@ public class ProfileFragment extends Fragment {
 
     private void getUserDetails(String userId){
         DatabaseReference dataRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
-
         dataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -69,7 +68,6 @@ public class ProfileFragment extends Fragment {
                     }
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getActivity(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();

@@ -51,7 +51,8 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(LoginActivity.this, StudentActivity.class));
                     finish();
-        });
+                })
+                .addOnFailureListener(authResult -> Toast.makeText(this, "Incorrect email or password", Toast.LENGTH_SHORT).show());
     }
 
     private void switchViews(String userId){
