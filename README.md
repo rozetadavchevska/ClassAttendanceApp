@@ -29,6 +29,9 @@ Additionally, Firebase Authentication plays a pivotal role in securing user inte
   - Receive notifications for upcoming classes
   - Confirm their class attendance
   - Anonymously leave a review for the classes they attended
+
+- **Admin:**
+  - Creates user accounts based on user role (Professor or student)
     
 ## Installation
 
